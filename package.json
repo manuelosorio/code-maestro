@@ -2,7 +2,12 @@
   "name": "@code-maestro/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "nx build main-app",
+    "dev": "nx serve main-app -- ",
+    "dev:host": "nx serve main-app --host ",
+    "test": "nx test main-app"
+  },
   "private": true,
   "dependencies": {
     "@analogjs/content": "^0.2.0",

@@ -339,6 +339,7 @@ import { Note } from '../../note';
           <p class="intro-description">
             Analog is for building applications and websites with Angular.
             <br />Powered by Vite.
+              <br /><Strong>Will be by Manuel Osorio used to build CodeMaestro</Strong>
           </p>
           <div class="btn-container">
             <a class="darkBtn" href="https://analogjs.org">Read the docs</a>
@@ -356,8 +357,7 @@ import { Note } from '../../note';
         <div class="trpc-container">
           <h2 class="trpc-heading">Leave a note</h2>
           <p class="trpc-description">
-            This is an example of how you can use tRPC to superpower your
-            client-server interaction.
+            This is an example of how you can use tRPC to superpower your client-server interaction.
           </p>
         </div>
         <form class="trpc-form" #f="ngForm" (ngSubmit)="addNote(f)">
