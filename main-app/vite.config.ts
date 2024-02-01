@@ -32,7 +32,6 @@ export default defineConfig(({ mode }) => {
       }),
       nxViteTsPaths(),
       splitVendorChunkPlugin(),
-
     ],
     test: {
       globals: true,
