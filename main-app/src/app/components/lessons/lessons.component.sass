@@ -1,0 +1,16 @@
+@use "../../../styles/componets/card"
+
+.lessons
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  gap: 1.125rem
+  list-style: none
+.lesson
+  @extend .card
+  * + *
+    margin: 0
+    padding: 0
+  padding-block: 1.5625rem
+  padding-inline: 2.1875rem
+
