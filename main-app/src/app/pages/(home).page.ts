@@ -57,7 +57,7 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
 
         <div class="col-7">
           <h2>Meet the Instructor</h2>
-          <h3>Manuel Osorio <span>(Full-stack Developer</span></h3>
+          <h3>Manuel Osorio <span>(Full-stack Developer)</span></h3>
           <p>
             As a Full-Stack JavaScript Developer with a background in
             Interaction Design, I bring a unique blend of front-end and back-end
@@ -95,6 +95,14 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
         <join-button></join-button>
       </section>
     </main>
+    <ul>
+    <li>Lesson 1</li>
+    <li>Lesson 2</li>
+    <li>Lesson 3</li>
+    <li>Lesson 4</li>
+    <li>Lesson 5</li>
+    <li>Lesson 6</li>
+    </ul>
   `,
 })
 export default class HomeComponent {}
