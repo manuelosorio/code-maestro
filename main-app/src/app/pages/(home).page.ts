@@ -95,14 +95,6 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
         <join-button></join-button>
       </section>
     </main>
-    <ul>
-    <li>Lesson 1</li>
-    <li>Lesson 2</li>
-    <li>Lesson 3</li>
-    <li>Lesson 4</li>
-    <li>Lesson 5</li>
-    <li>Lesson 6</li>
-    </ul>
   `,
 })
 export default class HomeComponent {}
