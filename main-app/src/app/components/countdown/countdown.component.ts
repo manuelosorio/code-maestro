@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
   styleUrl: './countdown.component.sass',
-  standalone: true
+  standalone: true,
 })
-export class CountdownComponent {
-}
+export class CountdownComponent {}

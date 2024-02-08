@@ -4,7 +4,6 @@ import { Component } from '@angular/core';
   selector: 'app-lessons',
   templateUrl: './lessons.component.html',
   styleUrls: ['./lessons.component.sass'],
-  standalone: true
+  standalone: true,
 })
-export class LessonsComponent {
-}
+export class LessonsComponent {}
