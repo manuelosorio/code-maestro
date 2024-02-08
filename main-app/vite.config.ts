@@ -1,8 +1,9 @@
 /// <reference types="vitest" />
 
 import analog from '@analogjs/platform';
-import { defineConfig, Plugin, splitVendorChunkPlugin } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+import angular from '@analogjs/vite-plugin-angular';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -26,7 +27,9 @@ export default defineConfig(({ mode }) => {
           },
         },
       }),
-
+      angular({
+        inlineStylesExtension: 'sass',
+      }),
       nxViteTsPaths(),
       splitVendorChunkPlugin(),
     ],
@@ -42,6 +45,13 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       'import.meta.vitest': mode !== 'production',
+    },
+    css: {
+      preprocessorOptions: {
+        sass: {
+          includePaths: ['src/styles'],
+        },
+      },
     },
   };
 });

@@ -10,7 +10,6 @@ export const appConfig: ApplicationConfig = {
     provideFileRouter(),
     provideClientHydration(),
     provideHttpClient(withFetch()),
-
     provideTrpcClient(),
   ],
 };
