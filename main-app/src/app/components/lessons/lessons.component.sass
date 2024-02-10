@@ -24,9 +24,6 @@
   padding-inline: 2.1875rem
   margin-inline-start: var(--left-margin)
   position: relative
-  * + *
-    margin: 0
-    padding: 0
   &:before
     content: ''
     background: variables.$primary
@@ -39,3 +36,19 @@
     left: calc(-1 * (var(--left-margin) + var(--circle-offset)))
     transform: translateY(-50%)
     border-radius: 50%
+  &__time
+    padding:
+      block: 0.35rem 0
+      inline: 0
+    margin: 0
+    display: flex
+    align-items: center
+    margin-block-start: 0.65rem
+    &::before
+      content: ''
+      display: block
+      background-image: url('https://cdn-manuelosorio.cyclic.app/api/icons/clock?color=%231C1C1C&size=24&stroke_width=2')
+      opacity: 65%
+      margin-inline-end: 2%
+      width: 24px
+      height: 24px
