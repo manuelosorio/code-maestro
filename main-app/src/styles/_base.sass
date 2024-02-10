@@ -1,11 +1,15 @@
 @use "variables"
+@use "mixins/breakpoints"
 *
   box-sizing: border-box
   &::before, &::after
     box-sizing: border-box
 
 html
-  font-size: 100%
+  font-size: 85%
+  scroll-behavior: smooth
+  +breakpoints.breakpoint-min('md')
+    font-size: 100%
 body
   font: 400 1.25rem/1.25 'Montserrat', sans-serif
   background: variables.$background
@@ -45,6 +49,7 @@ h1
   font-size: 3.75rem
   line-height: 1.1333
   font-weight: 900
+  text-transform: uppercase
 h2
   font-size: 2.25rem
 h3
@@ -54,3 +59,6 @@ h3
     font-size: 1.25rem
     font-weight: 400
     color: variables.$text-light
+header
+  justify-content: center
+  align-items: center
