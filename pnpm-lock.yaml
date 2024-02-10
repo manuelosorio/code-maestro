@@ -65,6 +65,9 @@ dependencies:
   mermaid:
     specifier: ^10.7.0
     version: 10.7.0
+  normalize.css:
+    specifier: ^8.0.1
+    version: 8.0.1
   prismjs:
     specifier: ^1.29.0
     version: 1.29.0
@@ -15561,6 +15564,13 @@ packages:
       }
     engines: { node: '>=0.10.0' }
     dev: true
+
+  /normalize.css@8.0.1:
+    resolution:
+      {
+        integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==,
+      }
+    dev: false
 
   /npm-bundled@3.0.0:
     resolution:

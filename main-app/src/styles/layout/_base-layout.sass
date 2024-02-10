@@ -1,0 +1,39 @@
+@use '../mixins/breakpoints'
+
+.container
+  width: 90%
+  max-width: 1200px
+  margin: 0 auto
+  padding: 0 20px
+  box-sizing: border-box
+  display: flex
+  flex-direction: column
+  @media (max-width: 768px)
+    padding: 0 10px
+.grid
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+  gap: 1rem
+
+[class*="column"]
+  padding: 0 1rem
+  box-sizing: border-box
+  grid-column: span 12
+@for $i from 1 through 12
+  .column
+    &--#{$i}
+      grid-column: span $i
+  .order
+    &--#{$i}
+      order: $i
+@each $key, $value in breakpoints.$breakpoint-map
+  +breakpoints.breakpoint-min($key)
+    @for $i from 1 through 12
+      .order
+        &__#{$key}
+          &--#{$i}
+            order: $i
+      .column
+        &__#{$key}
+          &--#{$i}
+            grid-column: span $i

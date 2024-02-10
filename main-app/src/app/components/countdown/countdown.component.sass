@@ -1,0 +1,24 @@
+@use '../../../styles/mixins/breakpoints'
+@use '../../../styles/componets/card'
+\:host
+  display: block
+  margin-block: 1rem
+.countdown
+  justify-content: center
+  align-items: center
+  +breakpoints.breakpoint-min('md')
+    display: flex
+  &__item
+    @extend .card
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    &:not(:last-child)
+      margin-inline-end: 1rem
+  &__number
+    font-size: 1.5rem
+    font-weight: 700
+  &__label
+    font-size: 1rem
+    font-weight: 400

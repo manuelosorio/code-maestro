@@ -1,0 +1,18 @@
+@use "../variables"
+.button
+  padding: 0.9375em 1.875em
+  font-size: 1rem
+  font-weight: 500
+  text-transform: capitalize
+  --button-background: transparent
+  --button-color: variables.$text
+  background: var(--button-background)
+  color: var(--button-color)
+  transition: 200ms
+  &__primary
+    @extend .button
+    --button-background: #{variables.$primary}
+    --button-color: #{variables.$background}
+    border-radius: 10px
+    &:hover
+      --button-background: #{variables.$primary-dark}

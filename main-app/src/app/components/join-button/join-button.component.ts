@@ -3,10 +3,16 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-nav',
+  selector: 'join-button',
   standalone: true,
   imports: [NgOptimizedImage, CommonModule, RouterLinkActive, RouterLink],
-  styleUrl: './nav.component.sass',
-  templateUrl: './nav.component.html',
+  styleUrl: './join-button.component.sass',
+  templateUrl: './join-button.component.html',
 })
-export class NavComponent {}
+export class JoinButtonComponent {
+  constructor() {}
+
+  onButtonClick() {
+    console.log('Button clicked');
+  }
+}
