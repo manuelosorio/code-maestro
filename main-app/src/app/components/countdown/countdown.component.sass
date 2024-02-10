@@ -1,10 +1,10 @@
+@use '../../../styles/mixins/breakpoints'
 @use '../../../styles/componets/card'
 .countdown
-  display: flex
-  flex-direction: row
-  flex-wrap: wrap
   justify-content: center
   align-items: center
+  +breakpoints.breakpoint-min('md')
+    display: flex
   &__item
     @extend .card
     display: flex
