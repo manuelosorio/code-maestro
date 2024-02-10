@@ -20,7 +20,7 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
 
     <main class="container">
       <header class="grid">
-        <div class="col-5">
+        <div class="column__md--5 order--3 order__md--1">
           <h1>Git & Github Simplified</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -30,8 +30,8 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
           </p>
           <join-button></join-button>
         </div>
-        <div class="col-1"></div>
-        <div class="col-6">
+        <div class="column__md--1 order--1"></div>
+        <div class="column__md--6 order--2 order__md--3 video ">
           <img
             ngSrc="https://placehold.co/585x317"
             alt="placeholder"
@@ -46,7 +46,7 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
         <app-countdown></app-countdown>
       </section>
       <section class="grid">
-        <div class="col-4">
+        <div class="column__md--4">
           <img
             ngSrc="https://github.com/manuelosorio.png"
             alt="placeholder"
@@ -55,7 +55,7 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
           />
         </div>
 
-        <div class="col-7">
+        <div class="column__md--7">
           <h2>Meet the Instructor</h2>
           <h3>Manuel Osorio <span>(Full-stack Developer)</span></h3>
           <p>
