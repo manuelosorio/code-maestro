@@ -47,7 +47,6 @@ export class CountdownComponent implements OnDestroy {
     Math.floor((this.timeRemaining() % (1000 * 60)) / 1000),
   );
 
-
   ngOnDestroy() {
     if (this.timer) {
       this.timer.unsubscribe();
