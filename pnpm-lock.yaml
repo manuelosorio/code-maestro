@@ -13,7 +13,7 @@ dependencies:
     version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(@angular/router@17.1.1)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/trpc':
     specifier: ^0.2.30
-    version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@trpc/client@10.45.0)(@trpc/server@10.45.0)(isomorphic-fetch@3.0.0)(superjson@2.2.1)
+    version: 0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@trpc/client@10.45.1)(@trpc/server@10.45.1)(isomorphic-fetch@3.0.0)(superjson@2.2.1)
   '@angular/animations':
     specifier: ~17.1.1
     version: 17.1.1(@angular/core@17.1.1)
@@ -42,11 +42,11 @@ dependencies:
     specifier: ~17.1.1
     version: 17.1.1(@angular/common@17.1.1)(@angular/core@17.1.1)(@angular/platform-browser@17.1.1)(rxjs@7.8.1)
   '@trpc/client':
-    specifier: ^10.45.0
-    version: 10.45.0(@trpc/server@10.45.0)
+    specifier: ^10.45.1
+    version: 10.45.1(@trpc/server@10.45.1)
   '@trpc/server':
-    specifier: ^10.45.0
-    version: 10.45.0
+    specifier: ^10.45.1
+    version: 10.45.1
   front-matter:
     specifier: ^4.0.2
     version: 4.0.2
@@ -286,7 +286,7 @@ packages:
       - rxjs
     dev: false
 
-  /@analogjs/trpc@0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@trpc/client@10.45.0)(@trpc/server@10.45.0)(isomorphic-fetch@3.0.0)(superjson@2.2.1):
+  /@analogjs/trpc@0.2.30(@angular/common@17.1.1)(@angular/core@17.1.1)(@trpc/client@10.45.1)(@trpc/server@10.45.1)(isomorphic-fetch@3.0.0)(superjson@2.2.1):
     resolution: {integrity: sha512-/K/bSUnOB4Q3ZSlDuuMcKbXUJpalA9AiGIM7msMbo/uaLAR8bIOf0sH5VtvhCF7IDGKFpVa46Sa+B2zv8bqcyQ==}
     peerDependencies:
       '@angular/common': '>=16.0.0'
@@ -298,8 +298,8 @@ packages:
     dependencies:
       '@angular/common': 17.1.1(@angular/core@17.1.1)(rxjs@7.8.1)
       '@angular/core': 17.1.1(rxjs@7.8.1)(zone.js@0.14.3)
-      '@trpc/client': 10.45.0(@trpc/server@10.45.0)
-      '@trpc/server': 10.45.0
+      '@trpc/client': 10.45.1(@trpc/server@10.45.1)
+      '@trpc/server': 10.45.1
       isomorphic-fetch: 3.0.0
       superjson: 2.2.1
       tslib: 2.6.2
@@ -5673,16 +5673,16 @@ packages:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
     dev: true
 
-  /@trpc/client@10.45.0(@trpc/server@10.45.0):
-    resolution: {integrity: sha512-m091R1qte9rvkvL8N1e/mzrbb8S4gb+Q4ZNJnEGDgd7kic/6a8DFgSciBTiCoSp0YwOTVhyQzSrrA/sZI6PhBg==}
+  /@trpc/client@10.45.1(@trpc/server@10.45.1):
+    resolution: {integrity: sha512-nVbAk1xpIiI64WgzXGgfxPOGgHoYvffn1IsjV1D/Ri7DL4BKuo2qtZ7UQ+OuHkzH2M8j4ikSVBDpk545fOdvpw==}
     peerDependencies:
-      '@trpc/server': 10.45.0
+      '@trpc/server': 10.45.1
     dependencies:
-      '@trpc/server': 10.45.0
+      '@trpc/server': 10.45.1
     dev: false
 
-  /@trpc/server@10.45.0:
-    resolution: {integrity: sha512-2Fwzv6nqpE0Ie/G7PeS0EVR89zLm+c1Mw7T+RAGtU807j4oaUx0zGkBXTu5u9AI+j+BYNN2GZxJcuDTAecbr1A==}
+  /@trpc/server@10.45.1:
+    resolution: {integrity: sha512-KOzBEVaHW9IxEedUP9E50y0tYxAuvlzyjn80Bpemw4rcNbT4WtJnhkFPUY+qDJl7Crt3B/oY2qMgSxVWi9toLg==}
     dev: false
 
   /@trysound/sax@0.2.0:
