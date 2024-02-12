@@ -52,6 +52,7 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
             alt="placeholder"
             width="290"
             height="290"
+            priority="true"
           />
         </div>
 
