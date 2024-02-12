@@ -29,7 +29,7 @@
     "marked": "^11.1.1",
     "marked-gfm-heading-id": "^3.1.2",
     "marked-highlight": "^2.1.0",
-    "mermaid": "^10.7.0",
+    "mermaid": "^10.8.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.29.0",
     "rxjs": "~7.8.1",
