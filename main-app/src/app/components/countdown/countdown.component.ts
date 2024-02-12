@@ -21,6 +21,17 @@ export class CountdownComponent implements OnDestroy {
   private readonly timer?: Subscription;
   private isBrowser: boolean = isPlatformBrowser(this.platformId);
 
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    if (this.isBrowser) {
+      this.timer = interval(1000).subscribe(() => {
+        this.timeRemaining.set(this.getTimeRemaining);
+      });
+    }
+  }
+  private get getTimeRemaining(): number {
+    return this._countdownDate.getTime() - new Date().getTime();
+  }
+
   daysRemaining = computed(() =>
     Math.floor(this.timeRemaining() / (1000 * 60 * 60 * 24)),
   );
@@ -36,16 +47,7 @@ export class CountdownComponent implements OnDestroy {
     Math.floor((this.timeRemaining() % (1000 * 60)) / 1000),
   );
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object) {
-    if (this.isBrowser) {
-      this.timer = interval(1000).subscribe(() => {
-        this.timeRemaining.set(this.getTimeRemaining);
-      });
-    }
-  }
-  get getTimeRemaining(): number {
-    return this._countdownDate.getTime() - new Date().getTime();
-  }
+
   ngOnDestroy() {
     if (this.timer) {
       this.timer.unsubscribe();
