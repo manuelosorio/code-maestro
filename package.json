@@ -52,7 +52,7 @@
     "@nx/devkit": "^17.2.8",
     "@nx/eslint": "17.2.8",
     "@nx/eslint-plugin": "17.2.8",
-    "@nx/js": "17.2.8",
+    "@nx/js": "18.0.4",
     "@nx/vite": "^17.2.8",
     "@nx/workspace": "17.2.8",
     "@schematics/angular": "~17.1.1",
