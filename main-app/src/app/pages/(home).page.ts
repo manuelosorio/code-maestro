@@ -4,6 +4,7 @@ import { NgOptimizedImage } from '@angular/common';
 import { JoinButtonComponent } from '../components/join-button/join-button.component';
 import { CountdownComponent } from '../components/countdown/countdown.component';
 import { LessonsComponent } from '../components/lessons/lessons.component';
+import { ModalComponent } from '../components/modal/modal.component';
 
 @Component({
   selector: 'main-app-home',
@@ -14,10 +15,11 @@ import { LessonsComponent } from '../components/lessons/lessons.component';
     JoinButtonComponent,
     CountdownComponent,
     LessonsComponent,
+    ModalComponent,
   ],
   template: `
     <app-nav></app-nav>
-
+    <app-modal></app-modal>
     <main class="container">
       <header class="grid">
         <div class="column__md--5 order--3 order__md--1">

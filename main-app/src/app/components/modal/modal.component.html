@@ -1,3 +1,126 @@
 <dialog class="modal" id="modal">
-  <button class="button button--close" id="closeModal" type="button"><img src="feather-icons.manuelosor.io/api/icons/x?color=%23000&amp;size=24&amp;stroke_width=1" alt="Close Modal"></button>
+  <form [formGroup]="modalForm">
+    <fieldset class="grid">
+      <legend class="column--12">Sign Up</legend>
+      <div class="form-group column--12 column__md--6">
+        <label for="name">
+          Name
+          @if (name.hasError('required') && (name.dirty || name.touched)) {
+            <span class="error">Name is required</span>
+          }
+        </label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          [class]="name.invalid && name?.touched ? 'has-error' : ''"
+        />
+      </div>
+      <div class="form-group column--12 column__md--6">
+        <label for="email">
+          Email
+          @if (email.hasError('required') && (email.dirty || email.touched)) {
+            <span class="error">Email is required</span>
+          }
+          @if (email.hasError('pattern') && (email.dirty || email.touched)) {
+            <span class="error">Email is invalid</span>
+          }
+        </label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          [class]="email.invalid && email?.touched ? 'has-error' : ''"
+        />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Billing</legend>
+      <div class="form-group">
+        <label for="address">
+          Address
+          @if (
+            address.hasError('required') && (address.dirty || address.touched)
+          ) {
+            <span class="error">Address is required</span>
+          }
+        </label>
+        <input
+          type="text"
+          id="address"
+          formControlName="address"
+          [class]="address.invalid && address?.touched ? 'has-error' : ''"
+        />
+      </div>
+      <div class="form-group">
+        <label for="zipCode">
+          Zip
+          @if (
+            zipCode.hasError('required') && (zipCode.dirty || zipCode.touched)
+          ) {
+            <span class="error">Zip is required</span>
+          }
+        </label>
+        <input
+          type="text"
+          id="zipCode"
+          formControlName="zipCode"
+          [class]="zipCode.invalid && zipCode?.touched ? 'has-error' : ''"
+        />
+      </div>
+      <div class="form-group">
+        <label for="card">
+          Card Number
+          @if (
+            cardNumber.hasError('required') &&
+            (cardNumber.dirty || cardNumber.touched)
+          ) {
+            <span class="error">Card is required</span>
+          }
+        </label>
+        <input
+          type="text"
+          id="card"
+          formControlName="cardNumber"
+          [class]="cardNumber.invalid && cardNumber?.touched ? 'has-error' : ''"
+        />
+      </div>
+      <div class="form-group">
+        <label for="expirationDate">
+          Expiration
+          @if (
+            expirationDate.hasError('required') &&
+            (expirationDate.dirty || expirationDate.touched)
+          ) {
+            <span class="error">Expiration is required</span>
+          }
+        </label>
+        <input
+          type="text"
+          id="expirationDate"
+          formControlName="expirationDate"
+          [class]="
+            expirationDate.invalid && expirationDate?.touched ? 'has-error' : ''
+          "
+        />
+      </div>
+      <div class="form-group">
+        <label for="cvv">
+          CVV
+          @if (cvv.hasError('required') && (cvv.dirty || cvv.touched)) {
+            <span class="error">CVV is required</span>
+          }
+        </label>
+        <input
+          type="text"
+          id="cvv"
+          formControlName="cvv"
+          [class]="cvv.invalid && cvv?.touched ? 'has-error' : ''"
+        />
+      </div>
+    </fieldset>
+
+    <button type="submit" [disabled]="modalForm.invalid">Submit</button>
+  </form>
 </dialog>
