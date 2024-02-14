@@ -121,7 +121,15 @@
       </div>
     </fieldset>
 
-    <button type="submit" [disabled]="modalForm.invalid">Submit</button>
+    <div class="grid">
+      <button
+        type="submit"
+        [disabled]="modalForm.invalid"
+        class="button__primary column--4"
+      >
+        Signup
+      </button>
+    </div>
   </form>
   <div class="close" (click)="close()">
     <img
