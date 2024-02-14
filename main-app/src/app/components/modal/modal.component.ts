@@ -18,7 +18,7 @@ import { ModalService } from '../../services/modal.service';
 })
 export class ModalComponent implements OnInit {
   public modalForm: FormGroup;
-  @ViewChild('modal') modal: ElementRef;
+  @ViewChild('modal') modal?: ElementRef;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,10 +58,14 @@ export class ModalComponent implements OnInit {
   }
 
   open(): void {
-    this.modal.nativeElement.showModal();
+    if (this.modal) {
+      this.modal.nativeElement.showModal();
+    }
   }
   close(): void {
-    this.modal.nativeElement.close();
+    if (this.modal) {
+      this.modal.nativeElement.close();
+    }
   }
   get name() {
     return this.modalForm.get('name');
