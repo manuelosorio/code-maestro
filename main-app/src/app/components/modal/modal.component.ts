@@ -1,23 +1,29 @@
-import { Component, OnInit, Type } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, NgOptimizedImage],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.sass',
   providers: [FormBuilder],
 })
 export class ModalComponent implements OnInit {
   public modalForm: FormGroup;
-  constructor(private formBuilder: FormBuilder) {
+  @ViewChild('modal') modal: ElementRef;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private modalService: ModalService,
+  ) {
     this.modalForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
       email: ['', [Validators.email, Validators.required]],
@@ -45,14 +51,18 @@ export class ModalComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-  close(): void {
-    console.log('close');
-  }
-  open(): void {
-    console.log('open');
+  ngOnInit(): void {
+    this.modalService.showModal$.subscribe(() => {
+      this.open();
+    });
   }
 
+  open(): void {
+    this.modal.nativeElement.showModal();
+  }
+  close(): void {
+    this.modal.nativeElement.close();
+  }
   get name() {
     return this.modalForm.get('name');
   }

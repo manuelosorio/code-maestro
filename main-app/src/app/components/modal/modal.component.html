@@ -1,11 +1,11 @@
-<dialog class="modal" id="modal">
+<dialog class="modal" #modal>
   <form [formGroup]="modalForm">
     <fieldset class="grid">
       <legend class="column--12">Sign Up</legend>
       <div class="form-group column--12 column__md--6">
         <label for="name">
           Name
-          @if (name.hasError('required') && (name.dirty || name.touched)) {
+          @if (name.hasError('required') && name.touched) {
             <span class="error">Name is required</span>
           }
         </label>
@@ -35,9 +35,9 @@
       </div>
     </fieldset>
 
-    <fieldset>
-      <legend>Billing</legend>
-      <div class="form-group">
+    <fieldset class="grid">
+      <legend class="column--12">Billing</legend>
+      <div class="form-group column--12 column__md--8">
         <label for="address">
           Address
           @if (
@@ -53,7 +53,7 @@
           [class]="address.invalid && address?.touched ? 'has-error' : ''"
         />
       </div>
-      <div class="form-group">
+      <div class="form-group column--12 column__md--4">
         <label for="zipCode">
           Zip
           @if (
@@ -69,7 +69,7 @@
           [class]="zipCode.invalid && zipCode?.touched ? 'has-error' : ''"
         />
       </div>
-      <div class="form-group">
+      <div class="form-group column--12 column__md--6">
         <label for="card">
           Card Number
           @if (
@@ -86,7 +86,7 @@
           [class]="cardNumber.invalid && cardNumber?.touched ? 'has-error' : ''"
         />
       </div>
-      <div class="form-group">
+      <div class="form-group column--12 column__md--3">
         <label for="expirationDate">
           Expiration
           @if (
@@ -105,7 +105,7 @@
           "
         />
       </div>
-      <div class="form-group">
+      <div class="form-group column--12 column__md--3">
         <label for="cvv">
           CVV
           @if (cvv.hasError('required') && (cvv.dirty || cvv.touched)) {
@@ -123,4 +123,10 @@
 
     <button type="submit" [disabled]="modalForm.invalid">Submit</button>
   </form>
+  <div class="close" (click)="close()">
+    <img
+      src="https://feather-icons.manuelosor.io/api/icons/x?color=%23fff&size=24&stroke_width=2"
+      alt=""
+    />
+  </div>
 </dialog>
