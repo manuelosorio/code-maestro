@@ -14,8 +14,8 @@
     content: ''
     position: absolute
     border-left: 5px solid  variables.$primary
-    top: 64px
-    bottom: 64px
+    top: 70px
+    bottom: 70px
 .lesson
   @extend .card
   +custom-properties.create-property('left-margin', 2.5rem)
@@ -36,6 +36,9 @@
     left: calc(-1 * (var(--left-margin) + var(--circle-offset)))
     transform: translateY(-50%)
     border-radius: 50%
+  &:after
+    content: ''
+
   &__time
     padding:
       block: 0.35rem 0
@@ -47,8 +50,9 @@
     &::before
       content: ''
       display: block
-      background-image: url('https://cdn-manuelosorio.cyclic.app/api/icons/clock?color=%231C1C1C&size=24&stroke_width=2')
+      background-image: url('https://feather-icons.manuelosor.io/api/icons/clock?color=%231C1C1C&size=24&stroke_width=2')
       opacity: 65%
       margin-inline-end: 2%
       width: 24px
       height: 24px
+
