@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'join-button',
@@ -10,9 +11,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './join-button.component.html',
 })
 export class JoinButtonComponent {
-  constructor() {}
+  constructor(private modalService: ModalService) {}
 
   onButtonClick() {
-    console.log('Button clicked');
+    this.modalService.triggerShowModal();
   }
 }

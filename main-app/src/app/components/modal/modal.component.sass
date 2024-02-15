@@ -1,0 +1,65 @@
+@use '../../../styles/variables'
+@use '../../../styles/componets/card'
+dialog
+  @extend .card
+  border: none
+  border-radius: 8px
+  padding: 1.5em
+  &:not([open])
+    transform:  translateY(200%)
+  //&::backdrop
+  &[open]
+    animation: animate-modal 700ms ease-in-out
+  form
+    display: flex
+    flex-direction: column
+    gap: 0.75em
+  button
+    width: fit-content
+fieldset
+  border: none
+legend
+  margin: 0
+  padding: 0
+  font:
+    weight: 900
+    size: 2.25rem
+.close
+  width: 1rem
+  height: 1rem
+  background: variables.$red
+  position: absolute
+  top: .75rem
+  right: .75rem
+  padding: 0.65em
+  border-radius: 50%
+  img
+    width: 75%
+    height: auto
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+label
+  .error
+    color: variables.$red
+    font-size: 0.75rem
+.form-group
+  display: flex
+  flex-direction: column
+  padding: 0
+.grid
+  gap: 2%
+input
+  border: 1px solid lighten(variables.$primary, 5%)
+  border-radius: 8px
+  padding-inline: 1.3em
+  padding-block: 0.75em
+
+@keyframes animate-modal
+  from
+    opacity: 0
+    transform: translateY(200%)
+  to
+    opacity: 1
+    transform: translateY(0)
