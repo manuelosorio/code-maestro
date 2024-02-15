@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  main-app:
+    build:
+      context: .
+      dockerfile: main-app/Dockerfile
+    ports:
+      - '4100:4100' # Map the port from the container to your host
+    environment:
+      - NODE_ENV=production

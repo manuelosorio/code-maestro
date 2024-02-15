@@ -133,6 +133,9 @@ devDependencies:
   '@nx/js':
     specifier: 18.0.4
     version: 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+  '@nx/node':
+    specifier: ^18.0.4
+    version: 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
   '@nx/vite':
     specifier: ^17.2.8
     version: 17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)(vite@5.0.12)(vitest@1.2.1)
@@ -4084,6 +4087,26 @@ packages:
       - verdaccio
     dev: true
 
+  /@nrwl/jest@18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-oe4qfnXc1WUPPmd9ua4mtgiqwXY+2XPz6zSkWghrrvc5wXu15tPvrBxHeU+KEXWu+rVy3iGLU2s5AivdXxEbIA==}
+    dependencies:
+      '@nx/jest': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - babel-plugin-macros
+      - debug
+      - node-notifier
+      - nx
+      - supports-color
+      - ts-node
+      - typescript
+      - verdaccio
+    dev: true
+
   /@nrwl/js@17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.2.2):
     resolution: {integrity: sha512-ZfTGNSmSBqvEfP8NOfOHcnqKwhXsfqBrN4IhthQR02sqTA9GkrjSfSUtcGXY01fUitsNUDOn6RZjgX6UysDCXg==}
     dependencies:
@@ -4131,6 +4154,27 @@ packages:
       - debug
       - nx
       - supports-color
+      - typescript
+      - verdaccio
+    dev: true
+
+  /@nrwl/node@18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-e7kpWUazYmiiFUTdzvOUeSMukolS0TEgfEqFdPjb+L3QaN58KdrsBAiMlY1GVX2VR019nJKBJXGXn6LOYfDxUg==}
+    dependencies:
+      '@nx/node': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - babel-plugin-macros
+      - debug
+      - js-yaml
+      - node-notifier
+      - nx
+      - supports-color
+      - ts-node
       - typescript
       - verdaccio
     dev: true
@@ -4461,6 +4505,32 @@ packages:
       - verdaccio
     dev: true
 
+  /@nx/eslint@18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8):
+    resolution: {integrity: sha512-6mjtPjXkS0aUWfF17D+PZI+Hhn+Cvm2yWTiDoVANsqt9rTOmlCa4fr01OcSyuaWFtkUlbKiKdQ1YYFyLD8zm7A==}
+    peerDependencies:
+      js-yaml: 4.1.0
+    peerDependenciesMeta:
+      js-yaml:
+        optional: true
+    dependencies:
+      '@nx/devkit': 18.0.4(nx@17.2.8)
+      '@nx/js': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+      '@nx/linter': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)
+      eslint: 8.56.0
+      tslib: 2.6.2
+      typescript: 5.3.3
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - nx
+      - supports-color
+      - verdaccio
+    dev: true
+
   /@nx/jest@17.2.8(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3):
     resolution: {integrity: sha512-FnwwURXmG+uv5ELHjHd9uVbUioCPjefAOtENcasLJMs2WYeu3zePsru5B8GO9BBM5g2eTmw10Y5f0riAikZjcw==}
     dependencies:
@@ -4475,6 +4545,39 @@ packages:
       jest-config: 29.7.0(@types/node@20.11.7)
       jest-resolve: 29.7.0
       jest-util: 29.7.0
+      resolve.exports: 1.1.0
+      tslib: 2.6.2
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - babel-plugin-macros
+      - debug
+      - node-notifier
+      - nx
+      - supports-color
+      - ts-node
+      - typescript
+      - verdaccio
+    dev: true
+
+  /@nx/jest@18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-A114oLtWCK99CaY/hUR00/1RISf77jqEgduDFsiaoe8fpr74HN3E8Z/NWW6gG9rkB8ymnvJMJGfbrN+2/Vv75Q==}
+    dependencies:
+      '@jest/reporters': 29.7.0
+      '@jest/test-result': 29.7.0
+      '@nrwl/jest': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+      '@nx/devkit': 18.0.4(nx@17.2.8)
+      '@nx/js': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+      '@phenomnomnominal/tsquery': 5.0.1(typescript@5.3.3)
+      chalk: 4.1.2
+      identity-obj-proxy: 3.0.0
+      jest-config: 29.7.0(@types/node@20.11.7)
+      jest-resolve: 29.7.0
+      jest-util: 29.7.0
+      minimatch: 9.0.3
       resolve.exports: 1.1.0
       tslib: 2.6.2
     transitivePeerDependencies:
@@ -4658,6 +4761,49 @@ packages:
       - js-yaml
       - nx
       - supports-color
+      - verdaccio
+    dev: true
+
+  /@nx/linter@18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8):
+    resolution: {integrity: sha512-yCg7H63eWkjReQUagAFAoICD53ByYZDyRqlkarZe9AGRWJM4GYKhJntihsk1mUOO7Sz0a907BMaWk8Wn5HbHEA==}
+    dependencies:
+      '@nx/eslint': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - debug
+      - js-yaml
+      - nx
+      - supports-color
+      - verdaccio
+    dev: true
+
+  /@nx/node@18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3):
+    resolution: {integrity: sha512-syjRRex+QuNTnDkIBG4z4Osu7vC5eYeb/nBZX6zmo/4H8y//tbBEjYRV2Yw4wpQp/gCA6fc+WFB9JkdfrMOwrA==}
+    dependencies:
+      '@nrwl/node': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+      '@nx/devkit': 18.0.4(nx@17.2.8)
+      '@nx/eslint': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)
+      '@nx/jest': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+      '@nx/js': 18.0.4(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@20.11.7)(nx@17.2.8)(typescript@5.3.3)
+      tslib: 2.6.2
+    transitivePeerDependencies:
+      - '@babel/traverse'
+      - '@swc-node/register'
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - babel-plugin-macros
+      - debug
+      - js-yaml
+      - node-notifier
+      - nx
+      - supports-color
+      - ts-node
+      - typescript
       - verdaccio
     dev: true
 
