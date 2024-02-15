@@ -12,6 +12,12 @@ Run `nx list` to get a list of available plugins and whether they have generator
 
 Learn more about [Nx generators on the docs](https://nx.dev/plugin-features/use-code-generators).
 
+### Generate new Components
+
+```shell
+ pnpm exec nx g @nx/angular:component _components/<component-name> --style=sass --skipTests=true  --project=<app-name>
+```
+
 ## Running tasks
 
 To execute tasks with Nx use the following syntax:
