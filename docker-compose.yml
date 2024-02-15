@@ -8,3 +8,4 @@ services:
       - '4100:4100' # Map the port from the container to your host
     environment:
       - NODE_ENV=production
+    restart: always
