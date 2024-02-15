@@ -93,7 +93,7 @@ import { ModalComponent } from '../components/modal/modal.component';
         <h2>Lessons</h2>
         <app-lessons></app-lessons>
       </section>
-      <section>
+      <section class="fade">
         <h2>Interested in Learning Git?</h2>
         <join-button></join-button>
       </section>
