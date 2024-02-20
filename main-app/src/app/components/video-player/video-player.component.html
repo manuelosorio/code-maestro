@@ -1,0 +1,97 @@
+<ng-container>
+  <video
+    [poster]="posterImage ? posterImage : ''"
+    #videoPlayer
+    (timeupdate)="updateSeekValue()"
+  >
+    <ng-content></ng-content>
+  </video>
+  @if (showPlayButton) {
+    <button class="button" (click)="playVideo()">
+      <img
+        src="https://feather-icons.manuelosor.io/api/icons/play-circle?color=%23000000&size=30"
+        alt=""
+      />
+    </button>
+  }
+  <div
+    class="video__nav"
+    (mouseover)="showControls()"
+    (mouseleave)="hideControls()"
+    [class]="showPlayButton ? 'is-hidden' : ''"
+  >
+    <input
+      type="range"
+      min="0"
+      max="100"
+      [(ngModel)]="seekValue"
+      (input)="vidSeek()"
+      step="1"
+      class="video__slider"
+    />
+    <div class="video__controls">
+      <button (click)="playPause()">
+        @if (isPlaying()) {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/pause"
+            alt=""
+          />
+        } @else {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/play"
+            alt=""
+          />
+        }
+      </button>
+
+      <span>
+        <span>{{ cTimeText }}</span
+        >/<span>{{ dTimeText }}</span>
+      </span>
+      <button (click)="vidMute()">
+        @if (isMuted()) {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/volume-x"
+            alt=""
+          />
+        } @else if (volumeValue === 0) {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/volume"
+            alt=""
+          />
+        } @else if (volumeValue > 0 && volumeValue < 50) {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/volume-1"
+            alt=""
+          />
+        } @else {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/volume-2"
+            alt=""
+          />
+        }
+      </button>
+      <input
+        type="range"
+        min="0"
+        max="100"
+        [(ngModel)]="volumeValue"
+        (input)="setVolume()"
+        step=".05"
+      />
+      <button (click)="toggleFullScreen()">
+        @if (isFullScreen) {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/minimize"
+            alt=""
+          />
+        } @else {
+          <img
+            src="https://feather-icons.manuelosor.io/api/icons/maximize"
+            alt=""
+          />
+        }
+      </button>
+    </div>
+  </div>
+</ng-container>

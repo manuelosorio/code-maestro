@@ -1,0 +1,50 @@
+\:host
+  width: 100%
+  height: auto
+  position: relative
+video
+  display: flex
+  min-width: 0
+  width: 106%
+  object-fit: cover
+  margin-left: -3%
+  overflow: hidden
+  padding: 0
+.button
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  cursor: pointer
+  //width: 24px
+  //height: 24px
+  //img
+  //  height: 100%
+  //  width: auto
+  //  display: block
+.video
+  &__nav
+    //display: flex
+    //flex-direction: column
+    //justify-content: space-between
+    //align-items: center
+    //width: 100%
+    //position: absolute
+    //bottom: 0
+    position: absolute
+    left: 0
+    bottom: 0
+    margin: auto
+    right: 0
+    button
+      background: none
+    &.is-hidden
+      display: none
+  &__slider
+    width: 100%
+    border-radius: 0
+  &__controls
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
