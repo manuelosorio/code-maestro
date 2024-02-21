@@ -28,10 +28,7 @@
     (mouseleave)="hideControls()"
     [class]="showPlayButton ? 'is-hidden' : ''"
   >
-    <div
-      class="video__scrubber"
-      (click)="scrubVideo($event)"
-    >
+    <div class="video__scrubber" (click)="scrubVideo($event)">
       <div class="scrubber-progress__played" #scrubberProgress></div>
 
       <div class="scrubber-progress__loaded" #bufferedProgress></div>
