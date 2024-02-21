@@ -130,12 +130,17 @@ export class VideoPlayerComponent {
   }
 
   scrubVideo(event: MouseEvent) {
-    const scrubber = this.scrubberProgress.nativeElement.parentNode;
-    const scrubWidth = scrubber.offsetWidth;
-    const offsetX = event.offsetX;
-    const duration = this.videoPlayer.nativeElement.duration;
-    const newTime = (offsetX / scrubWidth) * duration;
-    this.videoPlayer.nativeElement.currentTime = newTime;
+    const scrubber = event.currentTarget as HTMLElement;
+    const scrubberRect = scrubber.getBoundingClientRect();
+    const scrubberStart = scrubberRect.left + window.scrollX;
+    const offsetX = event.pageX - scrubberStart;
+    const scrubberWidth = scrubber.offsetWidth;
+    const videoDuration = this.videoPlayer.nativeElement.duration;
+    const newTime = (offsetX / scrubberWidth) * videoDuration;
+    this.videoPlayer.nativeElement.currentTime = Math.max(
+      0,
+      Math.min(newTime, videoDuration),
+    );
   }
   updateBufferStatus() {
     const video = this.videoPlayer.nativeElement;
