@@ -24,7 +24,7 @@ import { VideoPlayerComponent } from '../components/video-player/video-player.co
     <app-modal></app-modal>
     <main class="container">
       <header class="grid">
-        <div class="column__md--5 order--3 order__md--1">
+        <div class="column__lg--5 order--3 order__lg--1">
           <h1>Git & Github Simplified</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -34,7 +34,7 @@ import { VideoPlayerComponent } from '../components/video-player/video-player.co
           </p>
           <join-button></join-button>
         </div>
-        <div class="column__md--1 order--1"></div>
+        <div class="column__lg--1 order--1"></div>
         <!--        <div class="column__md&#45;&#45;6 order&#45;&#45;2 order__md&#45;&#45;3 video ">-->
         <!--          <img-->
         <!--            ngSrc="https://placehold.co/585x317"-->
@@ -45,7 +45,7 @@ import { VideoPlayerComponent } from '../components/video-player/video-player.co
         <!--        </div>-->
         <app-video-player
           posterImage="https://placehold.co/585x317"
-          class="column__md--6 order--2 order__md--3 video"
+          class="column__lg--6 order--2 order__lg--3 video"
         >
           <source
             src="https://media.w3.org/2010/05/sintel/trailer.mp4"

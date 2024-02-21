@@ -2,14 +2,15 @@
   <video
     [poster]="posterImage ? posterImage : ''"
     #videoPlayer
-    (timeupdate)="updateSeekValue()"
+    (timeupdate)="updateSeekValue(); this.updateScrubber()"
+    (progress)="updateBufferStatus()"
   >
     <ng-content></ng-content>
   </video>
   @if (showPlayButton) {
     <button class="button" (click)="playVideo()">
       <img
-        src="https://feather-icons.manuelosor.io/api/icons/play-circle?color=%23000000&size=30"
+        src="https://feather-icons.manuelosor.io/api/icons/play-circle?color=%23f2f2f2&size=30"
         alt=""
       />
     </button>
@@ -20,53 +21,48 @@
     (mouseleave)="hideControls()"
     [class]="showPlayButton ? 'is-hidden' : ''"
   >
-    <input
-      type="range"
-      min="0"
-      max="100"
-      [(ngModel)]="seekValue"
-      (input)="vidSeek()"
-      step="1"
-      class="video__slider"
-    />
+    <div class="video__scrubber" (click)="scrubVideo($event)">
+      <div class="scrubber-progress" #scrubberProgress></div>
+      <div class="buffered-progress" #bufferedProgress></div>
+    </div>
     <div class="video__controls">
       <button (click)="playPause()">
         @if (isPlaying()) {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/pause"
+            src="https://feather-icons.manuelosor.io/api/icons/pause?color=%23f2f2f2"
             alt=""
           />
         } @else {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/play"
+            src="https://feather-icons.manuelosor.io/api/icons/play?color=%23f2f2f2"
             alt=""
           />
         }
       </button>
 
-      <span>
+      <span class="time">
         <span>{{ cTimeText }}</span
         >/<span>{{ dTimeText }}</span>
       </span>
       <button (click)="vidMute()">
         @if (isMuted()) {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/volume-x"
+            src="https://feather-icons.manuelosor.io/api/icons/volume-x?color=%23f2f2f2"
             alt=""
           />
         } @else if (volumeValue === 0) {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/volume"
+            src="https://feather-icons.manuelosor.io/api/icons/volume?color=%23f2f2f2"
             alt=""
           />
         } @else if (volumeValue > 0 && volumeValue < 50) {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/volume-1"
+            src="https://feather-icons.manuelosor.io/api/icons/volume-1?color=%23f2f2f2"
             alt=""
           />
         } @else {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/volume-2"
+            src="https://feather-icons.manuelosor.io/api/icons/volume-2?color=%23f2f2f2"
             alt=""
           />
         }
@@ -82,12 +78,12 @@
       <button (click)="toggleFullScreen()">
         @if (isFullScreen) {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/minimize"
+            src="https://feather-icons.manuelosor.io/api/icons/minimize?color=%23f2f2f2"
             alt=""
           />
         } @else {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/maximize"
+            src="https://feather-icons.manuelosor.io/api/icons/maximize?color=%23f2f2f2"
             alt=""
           />
         }
