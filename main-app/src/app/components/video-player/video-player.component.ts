@@ -17,6 +17,8 @@ export class VideoPlayerComponent {
   @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
   @ViewChild('scrubberProgress') scrubberProgress!: ElementRef;
   @ViewChild('bufferedProgress') bufferedProgress!: ElementRef;
+  @ViewChild('hoverProgress') hoverScrubber!: ElementRef;
+  @ViewChild('videContainer') videoContainer!: ElementRef;
 
   public showPlayButton = true;
 
@@ -24,13 +26,13 @@ export class VideoPlayerComponent {
   volumeValue = 100;
   cTimeText = '00:00';
   dTimeText = '00:00';
-  isFullScreen = false;
+  isFullScreen = signal(false);
   isMuted = signal(false);
   isPlaying = signal(false);
 
   constructor() {
     if (this.videoPlayer) {
-      const videoElement = this.videoPlayer.nativeElement;
+      const videoElement: HTMLVideoElement = this.videoPlayer.nativeElement;
       this.volumeValue = videoElement.volume * 100;
       this.isMuted.set(videoElement.muted);
       this.setupTimeout();
@@ -41,7 +43,6 @@ export class VideoPlayerComponent {
     const videoElement = this.videoPlayer.nativeElement;
     if (this.isPlaying()) {
       videoElement.pause();
-      this.isPlaying.set(false);
     } else {
       videoElement
         .play()
@@ -49,17 +50,11 @@ export class VideoPlayerComponent {
           if (this.showPlayButton) {
             this.showPlayButton = false;
           }
-          this.isPlaying.set(true);
         })
         .catch((e) => {
           console.error(e);
         });
     }
-  }
-
-  vidSeek() {
-    const videoElement = this.videoPlayer.nativeElement;
-    videoElement.currentTime = videoElement.duration * (this.seekValue / 100);
   }
 
   playVideo() {
@@ -68,7 +63,6 @@ export class VideoPlayerComponent {
         .play()
         .then(() => {
           this.showPlayButton = false;
-          this.isPlaying.set(true);
         })
         .catch((e) => {
           console.error(e);
@@ -88,17 +82,21 @@ export class VideoPlayerComponent {
   }
 
   toggleFullScreen() {
-    const videoElement = this.videoPlayer.nativeElement;
-    if (!this.isFullScreen) {
-      this.isFullScreen = !this.isFullScreen;
-      if (videoElement.requestFullscreen) {
-        videoElement.requestFullscreen();
-      }
+    const videoContainer = this.videoContainer.nativeElement;
+    if (this.isFullScreen()) {
+      document
+        .exitFullscreen()
+        .then(() => {})
+        .catch((error) => {
+          console.error(error);
+        });
     } else {
-      // this.isFullScreen = !this.isFullScreen;
-      // if (videoElement.exitFullscreen) {
-      //   videoElement.exitFullscreen();
-      // }
+      videoContainer
+        .requestFullscreen()
+        .then(() => {})
+        .catch((error: unknown) => {
+          console.error(error);
+        });
     }
   }
 
@@ -109,11 +107,6 @@ export class VideoPlayerComponent {
   private setupTimeout() {
     const videoElement = this.videoPlayer.nativeElement;
     videoElement.ontimeupdate = () => {
-      // console.log(
-      //   'timeupdate',
-      //   videoElement.currentTime,
-      //   videoElement.duration,
-      // );
       this.seekValue = (videoElement.currentTime / videoElement.duration) * 100;
       this.cTimeText = this.formatTime(videoElement.currentTime);
       this.dTimeText = this.formatTime(videoElement.duration);
@@ -122,11 +115,6 @@ export class VideoPlayerComponent {
 
   updateSeekValue() {
     const videoElement = this.videoPlayer.nativeElement;
-    // console.log(
-    //   'updateSeekValue',
-    //   videoElement.currentTime,
-    //   videoElement.duration,
-    // );
     this.seekValue = (videoElement.currentTime / videoElement.duration) * 100;
     this.cTimeText = this.formatTime(videoElement.currentTime);
     this.dTimeText = this.formatTime(videoElement.duration);
@@ -138,8 +126,7 @@ export class VideoPlayerComponent {
 
   updateScrubber() {
     const video = this.videoPlayer.nativeElement;
-    const percent = (video.currentTime / video.duration) * 100;
-    this.scrubberProgress.nativeElement.style.width = percent + '%';
+    this.scrubberProgress.nativeElement.style.transform = `scaleX(${video.currentTime / video.duration})`;
   }
 
   scrubVideo(event: MouseEvent) {
@@ -158,6 +145,19 @@ export class VideoPlayerComponent {
       const percentBuffered = (bufferedEnd / duration) * 100;
       console.log('percentBuffered', percentBuffered);
       this.bufferedProgress.nativeElement.style.width = percentBuffered + '%';
+    }
+  }
+
+  setPlaying(_event: Event) {
+    this.isPlaying.set(!this.videoPlayer.nativeElement.paused);
+  }
+
+  setFullScreen(event: Event) {
+    console.log(event, { isFullScreen: this.isFullScreen() });
+    if (this.isFullScreen()) {
+      this.isFullScreen.set(false);
+    } else {
+      this.isFullScreen.set(true);
     }
   }
 }
