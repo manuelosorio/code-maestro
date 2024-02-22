@@ -44,7 +44,7 @@ import { VideoPlayerComponent } from '../components/video-player/video-player.co
         <!--          />-->
         <!--        </div>-->
         <app-video-player
-          posterImage="https://placehold.co/585x317"
+          posterImage="assets/git&github-thumb.webp"
           class="column__lg--6 order--2 order__lg--3 video"
         >
           <source
