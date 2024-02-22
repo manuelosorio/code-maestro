@@ -27,10 +27,9 @@ import { VideoPlayerComponent } from '../components/video-player/video-player.co
         <div class="column__lg--5 order--3 order__lg--1">
           <h1>Git & Github Simplified</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            Master the essentials of Git and GitHub with our simplified course
+            designed for rapid learning. Elevate your coding with key version
+            control skills that streamline collaboration and project management.
           </p>
           <join-button></join-button>
         </div>
