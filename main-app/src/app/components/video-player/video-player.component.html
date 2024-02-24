@@ -16,10 +16,7 @@
   </video>
   @if (showPlayButton) {
     <button class="button" (click)="playVideo()">
-      <img
-        src="https://feather-icons.manuelosor.io/api/icons/play-circle?color=%23f2f2f2&size=30"
-        alt=""
-      />
+      <i-feather name="play-circle"></i-feather>
     </button>
   }
   <div
@@ -38,15 +35,9 @@
         <div class="control__group">
           <button (click)="playPause()">
             @if (isPlaying()) {
-              <img
-                src="https://feather-icons.manuelosor.io/api/icons/pause?color=%23f2f2f2"
-                alt=""
-              />
+              <i-feather name="pause"></i-feather>
             } @else {
-              <img
-                src="https://feather-icons.manuelosor.io/api/icons/play?color=%23f2f2f2"
-                alt=""
-              />
+              <i-feather name="play"></i-feather>
             }
           </button>
           <span class="control__time">
@@ -57,25 +48,13 @@
         <div class="control__group">
           <button (click)="vidMute()">
             @if (isMuted()) {
-              <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume-x?color=%23f2f2f2"
-                alt=""
-              />
+              <i-feather name="volume-x"></i-feather>
             } @else if (volumeValue === 0) {
-              <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume?color=%23f2f2f2"
-                alt=""
-              />
+              <i-feather name="volume"></i-feather>
             } @else if (volumeValue > 0 && volumeValue < 50) {
-              <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume-1?color=%23f2f2f2"
-                alt=""
-              />
+              <i-feather name="volume-1"></i-feather>
             } @else {
-              <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume-2?color=%23f2f2f2"
-                alt=""
-              />
+              <i-feather name="volume-2"></i-feather>
             }
           </button>
           <input
@@ -90,15 +69,9 @@
       </div>
       <button (click)="toggleFullScreen()">
         @if (isFullScreen()) {
-          <img
-            src="https://feather-icons.manuelosor.io/api/icons/minimize?color=%23f2f2f2"
-            alt=""
-          />
+          <i-feather name="minimize"></i-feather>
         } @else {
-          <img
-            src="https://feather-icons.manuelosor.io/api/icons/maximize?color=%23f2f2f2"
-            alt=""
-          />
+          <i-feather name="maximize"></i-feather>
         }
       </button>
     </div>

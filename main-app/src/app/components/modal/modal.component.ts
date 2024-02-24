@@ -7,11 +7,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
+import { IconsModule } from '../../modules/icons/icons.module';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgOptimizedImage],
+  imports: [CommonModule, ReactiveFormsModule, NgOptimizedImage, IconsModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.sass',
   providers: [FormBuilder],
