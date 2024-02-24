@@ -1,11 +1,12 @@
 import { Component, ElementRef, Input, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { IconsModule } from '../../modules/icons/icons.module';
 
 @Component({
   selector: 'app-video-player',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, IconsModule],
   templateUrl: './video-player.component.html',
   styleUrl: './video-player.component.sass',
 })
