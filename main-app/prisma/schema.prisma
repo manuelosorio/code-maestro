@@ -1,6 +1,5 @@
-
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -9,12 +8,32 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(uuid())
-  email    String   @unique
-  name     String?
-  password String
+  id         String       @id @unique @default(uuid())
+  email      String       @unique
+  name       String?
+  password   String
+  mail_list  MailList[]   @relation("UserMailList")
+  subscriber Subscriber[] @relation("UserSubscriber")
 }
 
+model MailList {
+  id              String       @id @unique @default(uuid())
+  name            String
+  discription     String
+  user_id         String
+  mail_list_owner User         @relation(fields: [user_id], references: [id], name: "UserMailList")
+  slug            String       @unique
+  subscriber      Subscriber[]
+}
 
-
-
+model Subscriber {
+  id              String    @id @unique @default(uuid())
+  email           String
+  last_sent       DateTime?
+  subscribed_at   DateTime  @default(now())
+  unsubscribed_at DateTime?
+  mail_list_id    String
+  user_id         String?
+  mail_list       MailList  @relation(fields: [mail_list_id], references: [id])
+  user            User?     @relation(fields: [user_id], references: [id], name: "UserSubscriber")
+}
