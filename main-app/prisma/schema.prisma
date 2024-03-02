@@ -19,7 +19,7 @@ model User {
 model MailList {
   id              String       @id @unique @default(uuid())
   name            String
-  discription     String
+  description     String
   user_id         String
   mail_list_owner User         @relation(fields: [user_id], references: [id], name: "UserMailList")
   slug            String       @unique
