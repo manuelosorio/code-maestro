@@ -6,6 +6,7 @@
   "targets": {
     "build": {
       "executor": "@analogjs/platform:vite",
+      "dependsOn": ["prisma-generate"],
       "outputs": [
         "{options.outputPath}",
         "{workspaceRoot}/dist/main-app/.nitro",
