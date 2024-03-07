@@ -25,10 +25,10 @@ export default defineEventHandler(async (event) => {
       },
     })
     .then(() => {
-      return createError({
+      return {
         statusCode: 201,
-        statusMessage: 'User created',
-      });
+        body: { message: 'User created' },
+      };
     })
     .catch((error) => {
       if (error.code === 'P2002') {

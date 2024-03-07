@@ -4,11 +4,23 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 /**
- * @api {get} api/v1/mail-list/:id Given a mail-list
- */
+ * @api {get} api/v1/mail-list/:id
+ * @apiDescription Get a mail list by id
+ * @apiParam {String} id - Mail list id
+ * @apiSuccess {Object} mailList - Mail list object
+ * @apiSuccess {Object} mailListOwner - Mail list owner object
+ * @apiError {String} message - Mail list not found
+ * @apiError {String} message - Invalid mail list id
+ * @apiError {String} message - Internal server error
+ **/
 export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id');
-
+  if (!id) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Invalid mail list id',
+    });
+  }
   const mailList = await prisma.mailList.findUnique({
     where: {
       id: id,
@@ -34,9 +46,7 @@ export default defineEventHandler(async (event) => {
   prisma.$disconnect();
 
   if (!mailList) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    throw new createError({
+    throw createError({
       statusCode: 404,
       statusMessage: 'Mail list not found',
     });

@@ -1,8 +1,18 @@
 import { PrismaClient } from '@prisma/client';
-import { defineEventHandler, readBody, useSession } from 'h3';
+import { createError, defineEventHandler, readBody, useSession } from 'h3';
 import { compare } from 'bcrypt';
 
 const prisma = new PrismaClient();
+
+/**
+ * @api {post} api/v1/signin Sign in
+ * @apiDescription Sign in with email and password
+ * @apiParam {String} email User email
+ * @apiParam {String} password User password
+ * @apiSuccess {String} message Logged in
+ * @apiError {String} message Invalid email or password
+ * @apiError {String} message Already logged in
+ */
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
 
@@ -10,12 +20,10 @@ export default defineEventHandler(async (event) => {
     import.meta.env;
 
   if (event.context['session']) {
-    return {
-      statusCode: 400,
-      body: {
-        message: 'Already logged in',
-      },
-    };
+    throw createError({
+      statusCode: 409,
+      statusMessage: 'Already logged in',
+    });
   }
   const user = await prisma.user.findUnique({
     where: {
@@ -24,12 +32,10 @@ export default defineEventHandler(async (event) => {
   });
   const passwordMatch = user && (await compare(body.password, user.password));
   if (!passwordMatch) {
-    return {
+    throw createError({
       statusCode: 401,
-      body: {
-        message: 'Invalid email or password',
-      },
-    };
+      statusMessage: 'Invalid email or password',
+    });
   }
 
   const session = await useSession(event, {
