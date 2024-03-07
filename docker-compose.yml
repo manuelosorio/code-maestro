@@ -2,6 +2,8 @@ version: '3.8'
 volumes:
   postgres_data:
   main_app_data:
+  main_app_pnpm:
+  main_app_node_modules:
 services:
   postgres:
     image: 'postgres:13'
@@ -10,13 +12,23 @@ services:
     volumes:
       - 'postgres_data:/var/lib/postgresql/data'
     restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
   main-app:
+    depends_on:
+      - postgres
+    volumes:
+      - 'main_app_data:/app'
+      - 'main_app_node_modules:/usr/local/lib/node_modules'
+      - 'main_app_pnpm:/pnpm'
     build:
       context: .
       dockerfile: main-app/Dockerfile
+      args:
+        NODE_ENV: ${NODE_ENV}
+        DATABASE_URL: ${DATABASE_URL}
     ports:
-      - '4100:4100' # Map the port from the container to your host
-    environment:
-      - NODE_ENV=production
+      - '4100:4100'
     restart: always
