@@ -20,15 +20,15 @@ export default defineEventHandler(async (event): Promise<object | void> => {
     console.log('session', session);
     if (session) {
       if (session.expires.toISOString() < new Date().toISOString()) {
-        prisma.session.delete({
+        await prisma.session.delete({
           where: {
             id: session.id,
           },
         });
         deleteCookie(event, SESSION_COOKIE_NAME);
         if (
-          !event.path.startsWith('/api/v1/signup') ||
-          !event.path.startsWith('/api/v1/signin')
+          !event.path.endsWith('/signup') &&
+          !event.path.endsWith('/signin')
         ) {
           return {
             statusCode: 401,
@@ -38,11 +38,11 @@ export default defineEventHandler(async (event): Promise<object | void> => {
       } else {
         event.context['session'] = session;
       }
-    } /* else {
-      return {
-        statusCode: 401,
-        body: { message: 'Unauthorized' },
-      };
-    }*/
+    }
+  } else {
+    return {
+      statusCode: 401,
+      body: { message: 'Unauthorized' },
+    };
   }
 });

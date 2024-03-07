@@ -47,7 +47,6 @@ export default defineEventHandler(async (event) => {
       session_token: session.id,
     },
   });
-
   return {
     statusCode: 201,
     body: {

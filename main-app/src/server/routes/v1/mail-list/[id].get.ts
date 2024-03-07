@@ -20,7 +20,17 @@ export default defineEventHandler(async (event) => {
         id: id,
       },
     })
-    .mail_list_owner();
+    .mail_list_owner()
+    .then((user) => {
+      if (!user) {
+        return {};
+      }
+      return {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      };
+    });
   prisma.$disconnect();
 
   if (!mailList) {
