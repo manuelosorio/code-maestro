@@ -40,10 +40,10 @@ export default defineEventHandler(async (event): Promise<object | void> => {
             message: 'Mail list already exists',
           });
         }
+        console.error(error);
         throw createError({
           statusCode: 500,
           statusMessage: 'Internal server error',
-          cause: error,
         });
       });
   }

@@ -1,5 +1,11 @@
 import { PrismaClient } from '@prisma/client';
-import { createError, defineEventHandler, readBody, useSession } from 'h3';
+import {
+  createError,
+  defineEventHandler,
+  readBody,
+  useSession,
+  getRequestIP,
+} from 'h3';
 import { compare } from 'bcrypt';
 
 const prisma = new PrismaClient();
@@ -15,6 +21,9 @@ const prisma = new PrismaClient();
  */
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
+  const ip = getRequestIP(event, {
+    xForwardedFor: true,
+  });
 
   const { SESSION_SECRET, SESSION_COOKIE_NAME, SESSION_EXPIRY_DAYS } =
     import.meta.env;
@@ -41,10 +50,23 @@ export default defineEventHandler(async (event) => {
   const session = await useSession(event, {
     password: SESSION_SECRET,
     name: SESSION_COOKIE_NAME,
+    maxAge: 1000 * 60 * 60 * 24 * SESSION_EXPIRY_DAYS,
+    cookie: {
+      secure: true,
+      httpOnly: true,
+      sameSite: 'strict',
+    },
   });
   await session.update({
     user_id: user.id,
+    ip,
   });
+  if (!session.id) {
+    throw createError({
+      statusCode: 401,
+      statusMessage: 'Unauthorized',
+    });
+  }
 
   await prisma.session.create({
     data: {

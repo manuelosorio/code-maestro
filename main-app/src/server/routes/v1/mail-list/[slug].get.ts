@@ -4,8 +4,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 /**
- * @api {get} api/v1/mail-list/:id
- * @apiDescription Get a mail list by id
+ * @api {get} api/v1/mail-list/:slug
+ * @apiDescription Get a mail list by slug
  * @apiParam {String} id - Mail list id
  * @apiSuccess {Object} mailList - Mail list object
  * @apiSuccess {Object} mailListOwner - Mail list owner object
@@ -14,8 +14,8 @@ const prisma = new PrismaClient();
  * @apiError {String} message - Internal server error
  **/
 export default defineEventHandler(async (event) => {
-  const id = getRouterParam(event, 'id');
-  if (!id) {
+  const slug = getRouterParam(event, 'slug');
+  if (!slug) {
     throw createError({
       statusCode: 400,
       statusMessage: 'Invalid mail list id',
@@ -23,13 +23,13 @@ export default defineEventHandler(async (event) => {
   }
   const mailList = await prisma.mailList.findUnique({
     where: {
-      id: id,
+      slug,
     },
   });
   const mailListOwner = await prisma.mailList
     .findUnique({
       where: {
-        id: id,
+        slug,
       },
     })
     .mail_list_owner()
