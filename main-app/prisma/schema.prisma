@@ -61,19 +61,19 @@ model Subscriber {
 }
 
 model Course {
-  id                String             @id @unique @default(cuid())
-  title             String
-  slug              String             @unique
-  description       String
-  preview_video     String?
-  video_thumbnail   String?
-  lessons           Lesson[]
-  launch_date       LaunchDate[]
-  user_id           String
-  user              User               @relation(fields: [user_id], references: [id], name: "Course")
-  MailList          MailList?          @relation(fields: [mailListId], references: [id])
-  mailListId        String?
-  CourseEnrollment  CourseEnrollment[]
+  id               String             @id @unique @default(cuid())
+  title            String
+  slug             String             @unique
+  description      String
+  preview_video    String?
+  video_thumbnail  String?
+  lessons          Lesson[]
+  launch_date      LaunchDate[]
+  user_id          String
+  user             User               @relation(fields: [user_id], references: [id], name: "Course")
+  Mail_list        MailList?          @relation(fields: [mail_list_id], references: [id])
+  mail_list_id     String?
+  CourseEnrollment CourseEnrollment[]
 
   @@map("course")
 }
@@ -98,15 +98,14 @@ model LaunchDate {
 }
 
 model CourseEnrollment {
-  userId     String   @map("user_id")
-  courseId   String   @map("course_id")
-  enrolledAt DateTime @default(now()) @map("enrolled_at")
-  status     String   @default("active")
+  user_id     String   @map("user_id")
+  course_id   String   @map("course_id")
+  enrolled_at DateTime @default(now()) @map("enrolled_at")
+  status      String   @default("active")
 
-  user   User   @relation(fields: [userId], references: [id])
-  course Course @relation(fields: [courseId], references: [id])
+  user   User   @relation(fields: [user_id], references: [id])
+  course Course @relation(fields: [course_id], references: [id])
 
-  @@id([userId, courseId])
+  @@id([user_id, course_id])
   @@map("course_enrollment")
 }
-
