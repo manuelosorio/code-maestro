@@ -16,7 +16,7 @@ jobs:
   main:
     name: Nx Cloud - Main Job
 
-    uses: manuelosorio/nrwl-ci/.github/workflows/nx-cloud-main.yml@v0.14.0
+    uses: manuelosorio/nrwl-ci/.github/workflows/nx-cloud-main.yml@v0.15.0
     secrets:
       NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
     with:
