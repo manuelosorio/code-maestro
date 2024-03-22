@@ -8,15 +8,19 @@ datasource db {
 }
 
 model User {
-  id         String       @id @unique @default(cuid())
-  email      String       @unique
-  name       String?
-  password   String
-  mail_list  MailList[]   @relation("UserMailList")
-  subscriber Subscriber[] @relation("UserSubscriber")
-  created_at DateTime     @default(now())
-  updated_at DateTime?    @updatedAt
-  Session    Session[]
+  id               String             @id @unique @default(cuid())
+  email            String             @unique
+  name             String?
+  password         String
+  mail_list        MailList[]         @relation("UserMailList")
+  subscriber       Subscriber[]       @relation("UserSubscriber")
+  courses          Course[]           @relation("Course")
+  created_at       DateTime           @default(now())
+  updated_at       DateTime?          @updatedAt
+  Session          Session[]
+  CourseEnrollment CourseEnrollment[]
+
+  @@map("user")
 }
 
 model Session {
@@ -25,6 +29,8 @@ model Session {
   session_token String   @unique
   user_id       String
   user          User     @relation(fields: [user_id], references: [id])
+
+  @@map("session")
 }
 
 model MailList {
@@ -35,6 +41,9 @@ model MailList {
   mail_list_owner User         @relation(fields: [user_id], references: [id], name: "UserMailList")
   slug            String       @unique
   subscriber      Subscriber[]
+  course          Course[]
+
+  @@map("mail_list")
 }
 
 model Subscriber {
@@ -47,4 +56,57 @@ model Subscriber {
   user_id         String?
   mail_list       MailList  @relation(fields: [mail_list_id], references: [id])
   user            User?     @relation(fields: [user_id], references: [id], name: "UserSubscriber")
+
+  @@map("subscriber")
 }
+
+model Course {
+  id                String             @id @unique @default(cuid())
+  title             String
+  slug              String             @unique
+  description       String
+  preview_video     String?
+  video_thumbnail   String?
+  lessons           Lesson[]
+  launch_date       LaunchDate[]
+  user_id           String
+  user              User               @relation(fields: [user_id], references: [id], name: "Course")
+  MailList          MailList?          @relation(fields: [mailListId], references: [id])
+  mailListId        String?
+  CourseEnrollment  CourseEnrollment[]
+
+  @@map("course")
+}
+
+model Lesson {
+  id          String @id @unique @default(cuid())
+  title       String
+  description String
+  course_id   String
+  course      Course @relation(fields: [course_id], references: [id])
+
+  @@map("lesson")
+}
+
+model LaunchDate {
+  id        String   @id @unique @default(cuid())
+  date      DateTime
+  course_id String
+  course    Course   @relation(fields: [course_id], references: [id])
+
+  @@map("launch_date")
+}
+
+model CourseEnrollment {
+  userId     String   @map("user_id")
+  courseId   String   @map("course_id")
+  enrolledAt DateTime @default(now()) @map("enrolled_at")
+  status     String   @default("active")
+
+  user   User   @relation(fields: [userId], references: [id])
+  course Course @relation(fields: [courseId], references: [id])
+
+  @@id([userId, courseId])
+  @@map("course_enrollment")
+}
+
