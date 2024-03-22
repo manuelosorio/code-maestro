@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { createError, defineEventHandler, readValidatedBody } from 'h3';
-import { z } from 'zod';
+import { SafeParseError, SafeParseSuccess, z } from 'zod';
 
 import { CourseModel } from '../../../types';
 
@@ -32,31 +32,33 @@ export default defineEventHandler(async (event) => {
   const body = readValidatedBody(event, (reqBody) => {
     //fully validate the request body and make sure nothing is missing else throw an error
     const schema = z.object({
-      title: z.string().trim(),
-      description: z.string().trim(),
-      preview_video: z.string().trim(),
-      video_thumbnail: z.string().trim(),
-      launch_date: z.string().trim(),
+      title: z.string().trim().min(1),
+      description: z.string().trim().min(1),
+      preview_video: z.string().trim().min(1),
+      video_thumbnail: z.string().trim().min(1),
+      launch_date: z.string().trim().min(1),
     });
-    return schema.parse(reqBody) as CourseModel;
-  }).catch((error) => {
-    const missingFields = error.data.errors.map((fields) => {
-      return fields.path.join('.');
-    });
-
-    console.info({ missingFields });
-    // list all missing fields in the error message
-    throw createError({
-      statusCode: 400,
-      message: 'Missing required fields: ' + missingFields.join(', '),
-      cause: JSON.parse(JSON.stringify(missingFields)),
-      stack: undefined,
-    });
+    return schema.safeParse(reqBody) as SafeParseSuccess<CourseModel>;
   });
-  const session = event.context['session'];
-  const { title, description, preview_video, video_thumbnail, launch_date } =
-    await body;
 
+  const { title, description, preview_video, video_thumbnail, launch_date } =
+    await body.then(
+      (result: SafeParseError<unknown> | SafeParseSuccess<CourseModel>) => {
+        if (result.success) {
+          return result.data;
+        } else {
+          const missing_fields = result.error.issues.map((issue) => {
+            return issue.path.join('.');
+          });
+          throw createError({
+            statusCode: 400,
+            message: `Missing required fields: ${missing_fields.join(', ')}`,
+            stack: undefined,
+          });
+        }
+      },
+    );
+  const session = event.context['session'];
   if (!session) {
     throw createError({
       statusCode: 401,
