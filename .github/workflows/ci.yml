@@ -15,12 +15,14 @@ env:
 jobs:
   main:
     name: Nx Cloud - Main Job
-    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.14.0
+
+    uses: manuelosorio/nrwl-ci/.github/workflows/nx-cloud-main.yml@v0.15.1
     secrets:
       NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
     with:
       main-branch-name: master
       pnpm-version: 8.15.1
+      node-version: 18.17.1
       number-of-agents: 3
       init-commands: |
         pnpm exec nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
@@ -33,8 +35,9 @@ jobs:
 
   agents:
     name: Nx Cloud - Agents
-    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.13.0
+    uses: manuelosorio/nrwl-ci/.github/workflows/nx-cloud-agents.yml@v0.15.1
     secrets:
       NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
     with:
       number-of-agents: 3
+      pnpm-version: 8.15.1

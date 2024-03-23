@@ -6,6 +6,13 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
+    "prisma-generate": {
+      "executor": "@prisma/cli",
+      "options": {
+        "schema": "{projectRoot}/prisma/schema.prisma"
+      },
+      "cache": true
+    },
     "lint": {
       "cache": true,
       "inputs": [
