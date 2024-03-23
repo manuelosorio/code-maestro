@@ -40,3 +40,4 @@ jobs:
       NX_CLOUD_ACCESS_TOKEN: ${{ secrets.NX_CLOUD_ACCESS_TOKEN }}
     with:
       number-of-agents: 3
+      pnpm-version: 8.15.1
