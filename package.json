@@ -15,7 +15,7 @@
   },
   "private": true,
   "dependencies": {
-    "@analogjs/content": "^0.2.30",
+    "@analogjs/content": "^1.0.2",
     "@analogjs/router": "^0.2.30",
     "@analogjs/trpc": "^0.2.30",
     "@angular/animations": "17.2.4",
