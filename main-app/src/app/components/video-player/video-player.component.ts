@@ -86,14 +86,14 @@ export class VideoPlayerComponent {
     if (this.isFullScreen()) {
       document
         .exitFullscreen()
-        .then(() => {})
+        .then()
         .catch((error) => {
           console.error(error);
         });
     } else {
       videoContainer
         .requestFullscreen()
-        .then(() => {})
+        .then()
         .catch((error: unknown) => {
           console.error(error);
         });
