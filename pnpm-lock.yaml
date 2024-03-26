@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@analogjs/content':
-    specifier: ^0.2.30
-    version: 0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
+    specifier: ^1.0.2
+    version: 1.0.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/router':
     specifier: ^0.2.30
     version: 0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
@@ -240,6 +240,37 @@ packages:
 
   /@analogjs/content@0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1):
     resolution: {integrity: sha512-RUayZ6pIdAD8Uq4fV0mAboJmY2nQRZYJ07PR5cVJvOluRz3K9EbENR93Pv64FHhkWHy0Srdu7YcOlk0ZUqikCg==}
+    requiresBuild: true
+    peerDependencies:
+      '@angular/common': ^15.0.0 || >=16.0.0
+      '@angular/core': ^15.0.0 || >=16.0.0
+      '@angular/platform-browser': ^15.0.0 || >=16.0.0
+      '@angular/router': ^15.0.0 || >=16.0.0
+      front-matter: ^4.0.2
+      marked: ^5.0.2
+      marked-gfm-heading-id: ^3.0.4
+      marked-highlight: ^2.0.1
+      mermaid: ^10.2.4
+      prismjs: ^1.29.0
+      rxjs: ^6.5.0 || ^7.5.0
+    dependencies:
+      '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.3)
+      '@angular/platform-browser': 17.2.4(@angular/animations@17.2.4)(@angular/common@17.2.4)(@angular/core@17.2.4)
+      '@angular/router': 17.2.4(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
+      front-matter: 4.0.2
+      marked: 11.1.1
+      marked-gfm-heading-id: 3.1.2(marked@11.1.1)
+      marked-highlight: 2.1.0(marked@11.1.1)
+      mermaid: 10.8.0
+      prismjs: 1.29.0
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+    optional: true
+
+  /@analogjs/content@1.0.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-5V8bpJ85WgrbK/uM45XPIpz+4M6y5D2R9rAPO9bX9KH0ZwdnGmF0XFWqZLaFmO7Vk2LnctmLOaH3oyD94br5Tg==}
     peerDependencies:
       '@angular/common': ^15.0.0 || >=16.0.0
       '@angular/core': ^15.0.0 || >=16.0.0
