@@ -113,8 +113,8 @@ devDependencies:
     specifier: 17.2.3
     version: 17.2.3(@angular/compiler-cli@17.2.4)(@angular/platform-server@17.2.4)(@swc/core@1.3.106)(@types/node@18.19.26)(stylus@0.59.0)(typescript@5.3.3)
   '@angular-devkit/core':
-    specifier: 17.2.3
-    version: 17.2.3
+    specifier: 17.3.2
+    version: 17.3.2
   '@angular-devkit/schematics':
     specifier: 17.2.3
     version: 17.2.3
@@ -132,7 +132,7 @@ devDependencies:
     version: 5.2.0(@nx/devkit@18.1.3)(prisma@5.10.2)(ts-node@10.9.1)(tslib@2.6.2)
   '@nx/angular':
     specifier: 18.1.3
-    version: 18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.2.3)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3)
+    version: 18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.3.2)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3)
   '@nx/cypress':
     specifier: 18.1.3
     version: 18.1.3(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(cypress@13.7.1)(nx@18.1.3)(typescript@5.3.3)
@@ -527,6 +527,23 @@ packages:
 
   /@angular-devkit/core@17.2.3:
     resolution: {integrity: sha512-A7WWl1/VsZw6utFFPBib1wSbAB5OeBgAgQmVpVe9wW8u9UZa6CLc7b3InWtRRyBXTo9Sa5GNZDFfwlXhy3iW3w==}
+    engines: {node: ^18.13.0 || >=20.9.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
+    peerDependencies:
+      chokidar: ^3.5.2
+    peerDependenciesMeta:
+      chokidar:
+        optional: true
+    dependencies:
+      ajv: 8.12.0
+      ajv-formats: 2.1.1(ajv@8.12.0)
+      jsonc-parser: 3.2.1
+      picomatch: 4.0.1
+      rxjs: 7.8.1
+      source-map: 0.7.4
+    dev: true
+
+  /@angular-devkit/core@17.3.2:
+    resolution: {integrity: sha512-1vxKo9+pdSwTOwqPDSYQh84gZYmCJo6OgR5+AZoGLGMZSeqvi9RG5RiUcOMLQYOnuYv0arlhlWxz0ZjyR8ApKw==}
     engines: {node: ^18.13.0 || >=20.9.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
     peerDependencies:
       chokidar: ^3.5.2
@@ -2958,10 +2975,10 @@ packages:
       - supports-color
     dev: true
 
-  /@nrwl/angular@18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.2.3)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3):
+  /@nrwl/angular@18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.3.2)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3):
     resolution: {integrity: sha512-qeTDedl4pNOx4Wo0wt4FxqiwsvBLMRf5gngmDZNBeKTRWkDRmC7YqAWKClIJ65fNr7haim+trOWiL2Sva8DKGw==}
     dependencies:
-      '@nx/angular': 18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.2.3)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3)
+      '@nx/angular': 18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.3.2)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3)
       tslib: 2.6.2
     transitivePeerDependencies:
       - '@angular-devkit/build-angular'
@@ -3222,7 +3239,7 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@nx/angular@18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.2.3)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3):
+  /@nx/angular@18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.3.2)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3):
     resolution: {integrity: sha512-nS8o+kA+9OYPTCQjAicYad3Stv4GZtxYRsO7Pdfvwupk3dQQ5xGG17ihMlQdKZ31A+7oTlWNbYqHjEGsKWwnEg==}
     peerDependencies:
       '@angular-devkit/build-angular': '>= 15.0.0 < 18.0.0'
@@ -3236,9 +3253,9 @@ packages:
         optional: true
     dependencies:
       '@angular-devkit/build-angular': 17.2.3(@angular/compiler-cli@17.2.4)(@angular/platform-server@17.2.4)(@swc/core@1.3.106)(@types/node@18.19.26)(stylus@0.59.0)(typescript@5.3.3)
-      '@angular-devkit/core': 17.2.3
+      '@angular-devkit/core': 17.3.2
       '@angular-devkit/schematics': 17.2.3
-      '@nrwl/angular': 18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.2.3)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3)
+      '@nrwl/angular': 18.1.3(@angular-devkit/build-angular@17.2.3)(@angular-devkit/core@17.3.2)(@angular-devkit/schematics@17.2.3)(@schematics/angular@17.2.3)(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(eslint@8.56.0)(nx@18.1.3)(rxjs@7.8.1)(typescript@5.3.3)
       '@nx/devkit': 18.1.3(nx@18.1.3)
       '@nx/eslint': 18.1.3(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(nx@18.1.3)
       '@nx/js': 18.1.3(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(nx@18.1.3)(typescript@5.3.3)
@@ -9729,8 +9746,6 @@ packages:
     peerDependenciesMeta:
       webpack:
         optional: true
-      webpack-sources:
-        optional: true
     dependencies:
       webpack: 5.90.0(@swc/core@1.3.106)
       webpack-sources: 3.2.3
@@ -9742,8 +9757,6 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
-        optional: true
-      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.90.1(@swc/core@1.3.106)(esbuild@0.20.0)
