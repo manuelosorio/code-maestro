@@ -28,6 +28,8 @@ WORKDIR /app
 EXPOSE 4100
 EXPOSE 4101
 
+RUN apt update && apt install -y curl
+
 RUN addgroup --system main-app &&  \
     adduser --system --ingroup main-app main-app
 
