@@ -14,6 +14,9 @@
     "prisma:studio": "prisma studio --schema=main-app/prisma/schema.prisma"
   },
   "private": true,
+  "prisma": {
+    "seed": "node main-app/prisma/seed.mjs"
+  },
   "dependencies": {
     "@analogjs/content": "^1.0.2",
     "@analogjs/router": "^0.2.30",
