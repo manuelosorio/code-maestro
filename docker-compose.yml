@@ -2,8 +2,6 @@ version: '3.8'
 volumes:
   postgres_data:
   main_app_data:
-  main_app_pnpm:
-  main_app_node_modules:
 services:
   postgres:
     image: 'postgres:13'
