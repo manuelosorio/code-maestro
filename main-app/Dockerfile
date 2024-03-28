@@ -35,9 +35,10 @@ RUN addgroup --system main-app &&  \
 
 COPY . .
 RUN chown -R main-app:main-app .
+RUN chmod +x ./startup.sh
 RUN pnpm add -g nx@17.2.8 @analogjs/platform@0.2.30 @nx-tools/nx-prisma@5.2.0 vite@5.0.12
 RUN pnpm install
 
 RUN nx run main-app:build:production
 
-CMD ["node", "dist/main-app/analog/server/index.mjs"]
+CMD ["./startup.sh"]

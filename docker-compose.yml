@@ -21,8 +21,6 @@ services:
       - postgres
     volumes:
       - 'main_app_data:/app'
-      - 'main_app_node_modules:/usr/local/lib/node_modules'
-      - 'main_app_pnpm:/pnpm'
     build:
       context: .
       dockerfile: main-app/Dockerfile

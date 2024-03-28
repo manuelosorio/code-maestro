@@ -109,3 +109,10 @@ model CourseEnrollment {
   @@id([user_id, course_id])
   @@map("course_enrollment")
 }
+
+
+model DbStatus {
+  initialized Boolean @default(false)
+  @@map("db_status")
+  @@unique([initialized])
+}
