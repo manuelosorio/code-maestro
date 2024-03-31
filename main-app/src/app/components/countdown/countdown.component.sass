@@ -14,11 +14,28 @@
     flex-direction: column
     align-items: center
     justify-content: center
+    +breakpoints.breakpoint-min('md')
+      min-width: 9ch
     &:not(:last-child)
       margin-inline-end: 1rem
+    &.is-loading
+      position: relative
+      overflow: hidden
+      background: linear-gradient(180deg, rgb(229 222 222) 0%, rgba(255, 255, 255, 1) 95%)
+
+      &:after
+        content: ""
+        position: absolute
+        top: -150%
+        left: 0
+        height: 100%
+        width: 100%
+        background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%)
+        animation: shimmer 2.75s infinite
   &__number
     font-size: 1.5rem
     font-weight: 700
   &__label
     font-size: 1rem
     font-weight: 400
+
