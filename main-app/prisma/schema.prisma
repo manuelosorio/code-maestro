@@ -12,6 +12,7 @@ model User {
   email            String             @unique
   name             String?
   password         String
+  bio              String?
   mail_list        MailList[]         @relation("UserMailList")
   subscriber       Subscriber[]       @relation("UserSubscriber")
   courses          Course[]           @relation("Course")
@@ -65,6 +66,7 @@ model Course {
   title            String
   slug             String             @unique
   description      String
+  short_description String
   preview_video    String?
   video_thumbnail  String?
   lessons          Lesson[]

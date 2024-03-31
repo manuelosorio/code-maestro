@@ -1,8 +1,8 @@
 import { PrismaClient } from '@prisma/client';
 import { createError, defineEventHandler, readValidatedBody } from 'h3';
-import { SafeParseError, SafeParseSuccess, z } from 'zod';
+import { z } from 'zod';
 
-import { CourseModel } from '../../../types';
+// import { CourseModel } from '../../../types';
 
 const prisma = new PrismaClient();
 
@@ -10,7 +10,8 @@ const prisma = new PrismaClient();
  * @api {post} api/v1/courses Create a new course
  * @apiDescription Create a new course
  * @apiParam {String} title Course name
- * @apiParam {String} description Brief course description
+ * @apiParam {String} description Overview of the course
+ * @apiParam {String} short_description Brief course description
  * @apiParam {String} preview_video Preview video URL
  * @apiParam {String} video_thumbnail Video thumbnail URL
  * @apiParam {String} launch_date Course launch date
@@ -38,26 +39,24 @@ export default defineEventHandler(async (event) => {
       video_thumbnail: z.string().trim().min(1),
       launch_date: z.string().trim().min(1),
     });
-    return schema.safeParse(reqBody) as SafeParseSuccess<CourseModel>;
+    return schema.safeParse(reqBody);
   });
 
   const { title, description, preview_video, video_thumbnail, launch_date } =
-    await body.then(
-      (result: SafeParseError<unknown> | SafeParseSuccess<CourseModel>) => {
-        if (result.success) {
-          return result.data;
-        } else {
-          const missing_fields = result.error.issues.map((issue) => {
-            return issue.path.join('.');
-          });
-          throw createError({
-            statusCode: 400,
-            message: `Missing required fields: ${missing_fields.join(', ')}`,
-            stack: undefined,
-          });
-        }
-      },
-    );
+    await body.then((result) => {
+      if (result.success) {
+        return result.data;
+      } else {
+        const missing_fields = result.error.issues.map((issue) => {
+          return issue.path.join('.');
+        });
+        throw createError({
+          statusCode: 400,
+          message: `Missing required fields: ${missing_fields.join(', ')}`,
+          stack: undefined,
+        });
+      }
+    });
   const session = event.context['session'];
   if (!session) {
     throw createError({
@@ -68,8 +67,9 @@ export default defineEventHandler(async (event) => {
   return prisma.course
     .create({
       data: {
-        title: title,
         description,
+        title: title,
+        short_description,
         preview_video,
         video_thumbnail,
         user_id: session.user_id,
@@ -96,6 +96,7 @@ export default defineEventHandler(async (event) => {
               course: {
                 title: courseData.title,
                 description: courseData.description,
+                short_description: courseData.short_description,
                 slug: courseData.slug,
                 preview_video: courseData.preview_video,
                 video_thumbnail: courseData.video_thumbnail,

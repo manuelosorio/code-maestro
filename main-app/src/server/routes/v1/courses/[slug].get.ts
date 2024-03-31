@@ -13,8 +13,10 @@ export default defineEventHandler(async (event) => {
       title: true,
       slug: true,
       description: true,
+      short_description: true,
       preview_video: true,
       video_thumbnail: true,
+      user_id: true,
       launch_date: {
         select: {
           date: true,

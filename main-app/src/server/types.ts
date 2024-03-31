@@ -1,9 +1,19 @@
+export type UserModel = {
+  id: string;
+  name: string;
+  email: string;
+  bio: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type CourseModel = {
   title: string;
   description: string;
+  short_description: string;
   preview_video: string;
   video_thumbnail: string;
-  launch_date: string | Date;
+  launch_date: LaunchDateModel[];
   user_id: string;
   slug: string;
 };
@@ -39,7 +49,7 @@ export type LessonModel = {
 };
 
 export type LaunchDateModel = {
-  launch_date: string;
+  date: string;
 };
 
 export type SubscriberModel = {
