@@ -6,7 +6,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   selector: 'app-nav',
   standalone: true,
   imports: [NgOptimizedImage, CommonModule, RouterLinkActive, RouterLink],
-  styleUrl: './nav.component.sass',
+  styleUrls: ['./nav.component.sass'],
   templateUrl: './nav.component.html',
 })
 export class NavComponent {}
