@@ -48,7 +48,7 @@ model MailList {
 }
 
 model Subscriber {
-  id              String    @id @unique @default(cuid())
+  id              String    @unique @default(cuid())
   email           String
   last_sent       DateTime?
   subscribed_at   DateTime  @default(now())
@@ -57,7 +57,7 @@ model Subscriber {
   user_id         String?
   mail_list       MailList  @relation(fields: [mail_list_id], references: [id])
   user            User?     @relation(fields: [user_id], references: [id], name: "UserSubscriber")
-
+  @@id([mail_list_id, email])
   @@map("subscriber")
 }
 

@@ -9,5 +9,6 @@ export const load = async ({ params, fetch }: PageServerLoad) => {
   return {
     course,
     courseInstructor,
+    slug,
   };
 };

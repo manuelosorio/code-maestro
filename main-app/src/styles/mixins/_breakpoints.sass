@@ -1,5 +1,5 @@
 @use "../variables/breakpoints"
-$breakpoint-map: ("xs": breakpoints.$breakpoint-x-small, "sm": breakpoints.$breakpoint-small, "md": breakpoints.$breakpoint-medium, "lg": breakpoints.$breakpoint-large, "xl": breakpoints.$breakpoint-x-large)
+$breakpoint-map: ("xs": breakpoints.$breakpoint-x-small, "sm": breakpoints.$breakpoint-small, "md": breakpoints.$breakpoint-medium, "lg": breakpoints.$breakpoint-large, "xl": breakpoints.$breakpoint-x-large, "xxl": breakpoints.$breakpoint-xx-large)
 
 =breakpoint-min($breakpoint: string)
   $breakpoint: if(map-has-key($breakpoint-map, $breakpoint), map-get($breakpoint-map, $breakpoint), $breakpoint)

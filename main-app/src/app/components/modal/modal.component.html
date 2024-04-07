@@ -1,7 +1,13 @@
 <dialog class="modal" #modal>
-  <form [formGroup]="modalForm">
+  @if (errorMessage && errorMessage.length > 0) {
+    <div class="status status--error">{{ errorMessage }}</div>
+  }
+  @if (successMessage && successMessage.length > 0) {
+    <div class="status status--success">{{ successMessage }}</div>
+  }
+  <form [formGroup]="modalForm" (submit)="subscribe()">
     <fieldset class="grid">
-      <legend class="column--12">Sign Up</legend>
+      <legend class="column--12">Subscribe to the Course Mail List</legend>
       <div class="form-group column--12 column__md--6">
         <label for="name">
           Name
@@ -34,101 +40,18 @@
         />
       </div>
     </fieldset>
-
-    <fieldset class="grid">
-      <legend class="column--12">Billing</legend>
-      <div class="form-group column--12 column__md--8">
-        <label for="address">
-          Address
-          @if (
-            address.hasError('required') && (address.dirty || address.touched)
-          ) {
-            <span class="error">Address is required</span>
-          }
-        </label>
-        <input
-          type="text"
-          id="address"
-          formControlName="address"
-          [class]="address.invalid && address?.touched ? 'has-error' : ''"
-        />
-      </div>
-      <div class="form-group column--12 column__md--4">
-        <label for="zipCode">
-          Zip
-          @if (
-            zipCode.hasError('required') && (zipCode.dirty || zipCode.touched)
-          ) {
-            <span class="error">Zip is required</span>
-          }
-        </label>
-        <input
-          type="text"
-          id="zipCode"
-          formControlName="zipCode"
-          [class]="zipCode.invalid && zipCode?.touched ? 'has-error' : ''"
-        />
-      </div>
-      <div class="form-group column--12 column__md--6">
-        <label for="card">
-          Card Number
-          @if (
-            cardNumber.hasError('required') &&
-            (cardNumber.dirty || cardNumber.touched)
-          ) {
-            <span class="error">Card is required</span>
-          }
-        </label>
-        <input
-          type="text"
-          id="card"
-          formControlName="cardNumber"
-          [class]="cardNumber.invalid && cardNumber?.touched ? 'has-error' : ''"
-        />
-      </div>
-      <div class="form-group column--12 column__md--3">
-        <label for="expirationDate">
-          Expiration
-          @if (
-            expirationDate.hasError('required') &&
-            (expirationDate.dirty || expirationDate.touched)
-          ) {
-            <span class="error">Expiration is required</span>
-          }
-        </label>
-        <input
-          type="text"
-          id="expirationDate"
-          formControlName="expirationDate"
-          [class]="
-            expirationDate.invalid && expirationDate?.touched ? 'has-error' : ''
-          "
-        />
-      </div>
-      <div class="form-group column--12 column__md--3">
-        <label for="cvv">
-          CVV
-          @if (cvv.hasError('required') && (cvv.dirty || cvv.touched)) {
-            <span class="error">CVV is required</span>
-          }
-        </label>
-        <input
-          type="text"
-          id="cvv"
-          formControlName="cvv"
-          [class]="cvv.invalid && cvv?.touched ? 'has-error' : ''"
-        />
-      </div>
-    </fieldset>
-
-    <div class="grid">
+    <div class="grid cta-row">
       <button
         type="submit"
         [disabled]="modalForm.invalid"
-        class="button__primary column--4"
+        class="button__primary column--12 column__md--4"
       >
-        Signup
+        Subscribe
       </button>
+      <div class="column--12 column__md--8 auth-group grid">
+        <p class="column--6" >Have an account? <a routerLink="/auth/signin">Sign In</a></p>
+        <p class="column--6">Need an account? <a routerLink="/auth/signup">Sign Up</a> </p>
+      </div>
     </div>
   </form>
   <div class="close" (click)="close()">

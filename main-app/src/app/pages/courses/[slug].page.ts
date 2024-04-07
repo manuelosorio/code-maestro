@@ -25,7 +25,7 @@ import { injectLoad } from '@analogjs/router';
   ],
   template: `
     <app-nav></app-nav>
-    <app-modal></app-modal>
+    <app-modal [slug]="slug()"></app-modal>
     <main class="container">
       <header class="grid">
         <div class="column__lg--5 order--3 order__lg--1">
@@ -104,7 +104,10 @@ import { injectLoad } from '@analogjs/router';
   `,
 })
 export default class CoursePage {
-  data = toSignal(injectLoad<typeof load>(), { requireSync: true });
+  public data = toSignal(injectLoad<typeof load>(), { requireSync: true });
+  public slug = computed(() => {
+    return this.data().slug;
+  });
   public launchDate = computed(() => {
     return this.data().course.launch_date[0].date;
   });
