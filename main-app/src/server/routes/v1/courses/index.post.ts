@@ -23,8 +23,9 @@ const prisma = new PrismaClient();
  * {
  *  "title": "Course title",
  *  "description": "Course description",
- *  "preview_video": "https://www.youtube.com/watch?v=video_id",
- *  "video_thumbnail": "https://www.example.com/video_thumbnail.jpg",
+ *  "short_description": "Course short description",
+ *  "preview_video": "Video url ie: https://www.youtube.com/watch?v=video_id",
+ *  "video_thumbnail": "Thumbnail image url ie: https://www.example.com/video_thumbnail.jpg",
  *  "launch_date": "2022-12-31"
  *  }
  *  @apiSuccessExample {json} Success response:
@@ -35,6 +36,7 @@ export default defineEventHandler(async (event) => {
     const schema = z.object({
       title: z.string().trim().min(1),
       description: z.string().trim().min(1),
+      short_description: z.string().trim().min(1).max(255),
       preview_video: z.string().trim().min(1),
       video_thumbnail: z.string().trim().min(1),
       launch_date: z.string().trim().min(1),
@@ -42,21 +44,27 @@ export default defineEventHandler(async (event) => {
     return schema.safeParse(reqBody);
   });
 
-  const { title, description, preview_video, video_thumbnail, launch_date } =
-    await body.then((result) => {
-      if (result.success) {
-        return result.data;
-      } else {
-        const missing_fields = result.error.issues.map((issue) => {
-          return issue.path.join('.');
-        });
-        throw createError({
-          statusCode: 400,
-          message: `Missing required fields: ${missing_fields.join(', ')}`,
-          stack: undefined,
-        });
-      }
-    });
+  const {
+    title,
+    description,
+    short_description,
+    preview_video,
+    video_thumbnail,
+    launch_date,
+  } = await body.then((result) => {
+    if (result.success) {
+      return result.data;
+    } else {
+      const missing_fields = result.error.issues.map((issue) => {
+        return issue.path.join('.');
+      });
+      throw createError({
+        statusCode: 400,
+        message: `Missing required fields: ${missing_fields.join(', ')}`,
+        stack: undefined,
+      });
+    }
+  });
   const session = event.context['session'];
   if (!session) {
     throw createError({
@@ -68,7 +76,7 @@ export default defineEventHandler(async (event) => {
     .create({
       data: {
         description,
-        title: title,
+        title,
         short_description,
         preview_video,
         video_thumbnail,
