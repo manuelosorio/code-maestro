@@ -1,5 +1,4 @@
 import { Component, computed } from '@angular/core';
-import { NavComponent } from '../../components/nav/nav.component';
 import { AsyncPipe, NgOptimizedImage } from '@angular/common';
 import { JoinButtonComponent } from '../../components/join-button/join-button.component';
 import { CountdownComponent } from '../../components/countdown/countdown.component';
@@ -14,7 +13,6 @@ import { injectLoad } from '@analogjs/router';
   selector: 'main-app-course',
   standalone: true,
   imports: [
-    NavComponent,
     NgOptimizedImage,
     JoinButtonComponent,
     CountdownComponent,
@@ -24,7 +22,6 @@ import { injectLoad } from '@analogjs/router';
     AsyncPipe,
   ],
   template: `
-    <app-nav></app-nav>
     <app-modal [slug]="slug()"></app-modal>
     <main class="container">
       <header class="grid">
