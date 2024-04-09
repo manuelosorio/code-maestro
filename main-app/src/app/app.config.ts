@@ -7,6 +7,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideFileRouter(),
     provideClientHydration(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
   ],
 };
