@@ -15,11 +15,10 @@ const prisma = new PrismaClient();
  */
 export default defineEventHandler(async (event) => {
   const body = await readBody(event);
-
   return await prisma.user
     .create({
       data: {
-        email: body.email,
+        email: body.email.toString().toLowerCase(),
         name: body.name,
         password: await hash(body.password, 10),
       },

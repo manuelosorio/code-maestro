@@ -7,10 +7,8 @@ import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   return {
-    root: __dirname,
     publicDir: 'src/public',
     build: {
-      outDir: '../dist/./main-app',
       target: ['es2020'],
     },
     server: {

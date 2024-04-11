@@ -68,7 +68,10 @@ export class ModalComponent implements OnInit {
     return this.modalForm.get('email');
   }
   subscribe() {
-    console.log(this.slug());
+    if (!this.slug()) {
+      this.errorMessage = 'Mail list not found';
+      return;
+    }
     this.httpClient
       .post(`/api/v1/mail-list/${this.slug()}/subscribe`, this.modalForm.value)
       .subscribe({
@@ -81,7 +84,6 @@ export class ModalComponent implements OnInit {
           }, 1500);
         },
         error: (err) => {
-          console.error(err);
           switch (err.status) {
             case 404:
               this.errorMessage = 'Mail list not found';

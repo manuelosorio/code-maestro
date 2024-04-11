@@ -2,11 +2,12 @@ import { PrismaClient } from '@prisma/client';
 import {
   createError,
   defineEventHandler,
-  readBody,
   useSession,
   getRequestIP,
+  readValidatedBody,
 } from 'h3';
 import { compare } from 'bcrypt';
+import { z } from 'zod';
 
 const prisma = new PrismaClient();
 
@@ -20,7 +21,6 @@ const prisma = new PrismaClient();
  * @apiError {String} message Already logged in
  */
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
   const ip = getRequestIP(event, {
     xForwardedFor: true,
   });
@@ -34,12 +34,40 @@ export default defineEventHandler(async (event) => {
       statusMessage: 'Already logged in',
     });
   }
+
+  const body = readValidatedBody(event, (reqBody) => {
+    const schema = z.object({
+      email: z.string().trim().email().toLowerCase(),
+      password: z.string(),
+    });
+    return schema.safeParse(reqBody);
+  });
+  const { email, password } = await body.then((result) => {
+    if (result.success) {
+      return result.data;
+    } else {
+      const missing_fields = result.error.issues.map((issue) => {
+        return issue.path.join('.');
+      });
+      throw createError({
+        statusCode: 400,
+        message: `Missing required fields: ${missing_fields.join(', ')}`,
+        stack: undefined,
+      });
+    }
+  });
+
   const user = await prisma.user.findUnique({
     where: {
-      email: body.email,
+      email,
+    },
+    select: {
+      id: true,
+      password: true,
     },
   });
-  const passwordMatch = user && (await compare(body.password, user.password));
+  const passwordMatch = user && (await compare(password, user.password));
+
   if (!passwordMatch) {
     throw createError({
       statusCode: 401,
