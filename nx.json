@@ -3,7 +3,7 @@
   "targetDefaults": {
     "build": {
       "cache": true,
-git       "dependsOn": ["^build"],
+      "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
     "prisma-generate": {
