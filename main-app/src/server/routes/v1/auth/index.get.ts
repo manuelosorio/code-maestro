@@ -1,23 +1,21 @@
-import {
-  defineEventHandler,
-} from 'h3';
-
+import { createError, defineEventHandler } from 'h3';
 
 export default defineEventHandler(async (event) => {
-  if (event.context['session']) {
-    return {
-      //TODO: Send Short-live JWT
-      statusCode: 200,
-      body: {
-        authenticated: true
-      }
+  const session = event.context['session'];
+  if (session) {
+    if (!session.user_id) {
+      return {
+        statusCode: 200,
+        authenticated: false,
+      };
     }
-  } else {
     return {
       statusCode: 200,
-      body: {
-        authenticated: false
-      }
-    }
+      authenticated: true,
+    };
   }
+  throw createError({
+    statusCode: 400,
+    message: 'Unknown error!',
+  });
 });

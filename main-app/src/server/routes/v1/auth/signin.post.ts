@@ -28,13 +28,6 @@ export default defineEventHandler(async (event) => {
   const { SESSION_SECRET, SESSION_COOKIE_NAME, SESSION_EXPIRY_DAYS } =
     import.meta.env;
 
-  if (event.context['session']) {
-    throw createError({
-      statusCode: 409,
-      statusMessage: 'Already logged in',
-    });
-  }
-
   const body = readValidatedBody(event, (reqBody) => {
     const schema = z.object({
       email: z.string().trim().email().toLowerCase(),
@@ -75,19 +68,21 @@ export default defineEventHandler(async (event) => {
     });
   }
 
+  // deleteCookie(event, SESSION_COOKIE_NAME);
+
   const session = await useSession(event, {
     password: SESSION_SECRET,
     name: SESSION_COOKIE_NAME,
-    maxAge: 1000 * 60 * 60 * 24 * SESSION_EXPIRY_DAYS,
     cookie: {
+      maxAge: 60 * 60 * 24 * SESSION_EXPIRY_DAYS,
       secure: true,
       httpOnly: true,
-      sameSite: 'strict',
+      sameSite: 'lax',
+      domain: import.meta.env.VITE_ANALOG_PUBLIC_BASE_URL,
     },
   });
   await session.update({
     user_id: user.id,
-    ip,
   });
   if (!session.id) {
     throw createError({
