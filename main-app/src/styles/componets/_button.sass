@@ -8,11 +8,18 @@
   --button-color: variables.$text
   background: var(--button-background)
   color: var(--button-color)
-  transition: 200ms
+  border-radius: 10px
+  transition: 200ms ease
   &__primary
     @extend .button
     --button-background: #{variables.$primary}
     --button-color: #{variables.$background}
-    border-radius: 10px
+
     &:hover
       --button-background: #{variables.$primary-dark}
+  &__secondary
+    @extend .button
+    --button-background: #{variables.$white}
+    --button-color: #{variables.$black}
+    &:hover
+      --button-background: #{variables.$primary}
