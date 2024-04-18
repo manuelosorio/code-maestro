@@ -2,7 +2,6 @@ import {
   Component,
   Inject,
   OnDestroy,
-  OnInit,
   PLATFORM_ID,
   signal,
   WritableSignal,
@@ -25,7 +24,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './nav.component.html',
   providers: [AuthService, HttpClientModule],
 })
-export class NavComponent implements OnInit, OnDestroy {
+export class NavComponent implements OnDestroy {
   private readonly authSubscription: Subscription | undefined;
   public isAuth: WritableSignal<any>;
   private isBrowser: boolean = isPlatformBrowser(this.platformId);
@@ -49,9 +48,6 @@ export class NavComponent implements OnInit, OnDestroy {
       );
     }
   }
-
-  ngOnInit(): void {}
-
   ngOnDestroy(): void {
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();

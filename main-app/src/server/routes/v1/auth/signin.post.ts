@@ -21,7 +21,7 @@ const prisma = new PrismaClient();
  * @apiError {String} message Already logged in
  */
 export default defineEventHandler(async (event) => {
-  const ip = getRequestIP(event, {
+  const _ip = getRequestIP(event, {
     xForwardedFor: true,
   });
 
