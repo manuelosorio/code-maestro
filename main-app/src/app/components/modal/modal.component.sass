@@ -88,26 +88,4 @@ input
     text-decoration: none
     &:hover
       text-decoration: underline
-.status
-  display: flex
-  justify-content: center
 
-  border-radius: 5px
-  background: var(--bg-color)
-  color: var(--text-color)
-
-  font-size: 0.8rem
-
-  width: 92%
-  padding: 1em
-  margin: 1em auto
-  gap: 0.5em
-  $black: variables.$black
-  &--success
-    --text-color: #{$black}
-    $bg-color: lighten(variables.$green, 15%)
-    --bg-color: #{$bg-color}
-  &--error
-    --text-color: #{$black}
-    $bg-color: lighten(variables.$red, 15%)
-    --bg-color: #{$bg-color}

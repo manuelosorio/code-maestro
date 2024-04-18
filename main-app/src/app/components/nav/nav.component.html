@@ -20,11 +20,17 @@
     <li class="nav__link">
       <a routerLink="/projects" routerLinkActive="active">Projects</a>
     </li>
-    <li class="nav__link button__secondary">
-      <a routerLink="/auth/signin" routerLinkActive="active">Sign In</a>
-    </li>
-    <li class="nav__link">
-      <a routerLink="/auth/signup" routerLinkActive="active">Sign Up</a>
-    </li>
+    @if (isAuth()) {
+      <li class="nav__link">
+        <button (click)="signOut()" class="button__secondary">Sign Out</button>
+      </li>
+    } @else {
+      <li class="nav__link">
+        <a routerLink="/auth/signin" routerLinkActive="active">Sign In</a>
+      </li>
+      <li class="nav__link">
+        <a routerLink="/auth/signup" routerLinkActive="active">Sign Up</a>
+      </li>
+    }
   </ul>
 </nav>

@@ -1,4 +1,4 @@
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
@@ -15,29 +15,53 @@ export class AuthService {
 
   constructor(private http: HttpClient) {
     this.authenticatedSubject = new BehaviorSubject<boolean | undefined>(
-      this.authenticated ?? false,
+      this.authenticated,
     );
     this.authenticationErrSubject = new Subject();
     this.authenticated$ = this.authenticatedSubject.asObservable();
     this.authenticationErr = this.authenticationErrSubject.asObservable();
-    // this.isAuthenticated();
+  }
+
+  setAuthStatus(isAuth: boolean) {
+    this.authenticatedSubject.next(isAuth);
   }
   isAuthenticated() {
-    return this.http.get('/api/v1/auth').subscribe((res: any) => {
-      console.log(res)
-      this.authenticated = res.body.authenticated;
-      this.authenticatedSubject.next(this.authenticated);
-    });
+    return this.http.get<{ statusCode: number; authenticated: boolean }>(
+      '/api/v1/auth/',
+      {
+        withCredentials: true,
+      },
+    );
   }
 
   signIn(data) {
     return this.http.post('/api/v1/auth/signin', data, {
-      withCredentials: true
+      withCredentials: true,
     });
   }
 
+  signOut() {
+    return this.http
+      .delete('/api/v1/auth', {
+        withCredentials: true,
+      })
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.authenticatedSubject.next(false);
+        },
+        error: (err) => {
+          console.error(err.message);
+        },
+      });
+  }
   signUp(data) {
-    return this.http.post('/api/v1/auth/signup', data, {
+    return this.http.post<{
+      statusCode: number;
+      body: {
+        message: string;
+      };
+    }>('/api/v1/auth/signup', data, {
       withCredentials: true,
     });
   }
