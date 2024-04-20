@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'main-app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent],
+  imports: [RouterOutlet, NavComponent, HttpClientModule],
   providers: [HttpClientModule],
   template: `
     <app-nav></app-nav>

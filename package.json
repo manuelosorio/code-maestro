@@ -6,7 +6,7 @@
     "build": "nx build main-app",
     "dev": "nx serve main-app",
     "dev:host": "nx serve main-app --host",
-    "test": "nx test main-app",
+    "test": "NODE_ENV=test nx test main-app",
     "prisma:generate": "prisma generate --schema=main-app/prisma/schema.prisma",
     "prisma:migrate": "npx prisma migrate deploy --schema=main-app/prisma/schema.prisma",
     "prisma:push": "npx prisma db push --schema=main-app/prisma/schema.prisma",
