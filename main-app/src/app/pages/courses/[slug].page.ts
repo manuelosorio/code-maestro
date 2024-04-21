@@ -10,7 +10,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { injectLoad } from '@analogjs/router';
 
 @Component({
-  selector: 'main-app-course',
+  selector: 'main-app-course-details',
   standalone: true,
   imports: [
     NgOptimizedImage,
@@ -42,7 +42,7 @@ import { injectLoad } from '@analogjs/router';
         <!--          />-->
         <!--        </div>-->
         <app-video-player
-          posterImage="assets/git&github-thumb.webp"
+          posterImage="{{ data().course.video_thumbnail }}"
           class="column__lg--6 order--2 order__lg--3 video"
         >
           <source

@@ -6,9 +6,11 @@ export const load = async ({ params, fetch }: PageServerLoad) => {
   const course: CourseModel = await fetch(`/api/v1/courses/${slug}`);
   const { user_id } = course;
   const courseInstructor: UserModel = await fetch(`/api/v1/users/${user_id}`);
+  // const lessons: LessonModel = await fetch('');
   return {
     course,
     courseInstructor,
     slug,
+    // lessons,
   };
 };
