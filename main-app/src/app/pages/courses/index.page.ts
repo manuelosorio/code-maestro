@@ -1,4 +1,4 @@
-import { Component, computed, PLATFORM_ID } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { injectLoad, RouteMeta } from '@analogjs/router';
 import { load } from './index.server';
