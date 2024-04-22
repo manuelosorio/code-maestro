@@ -109,7 +109,7 @@ async function main() {
 
   const launchDate = await prisma.launchDate.create({
     data: {
-      date: new Date('2024-04-21'),
+      date: new Date('2024-05-09'),
       course_id: course.id,
     },
   });
