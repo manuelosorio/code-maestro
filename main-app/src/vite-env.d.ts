@@ -10,6 +10,7 @@ interface ImportMetaEnv {
   readonly SESSION_EXPIRY_DAYS: number;
   readonly SESSION_SECRET: string;
   readonly SESSION_COOKIE_NAME: string;
+  readonly VITE_ANALOG_PUBLIC_BASE_URL: string;
   readonly DATABASE_URL:
     | string
     | `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?schema=${DB_SCHEMA}`;

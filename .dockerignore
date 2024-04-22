@@ -5,3 +5,5 @@ Dockerfile
 dist/
 .idea/
 .git/
+*.env
+!example.env

@@ -9,16 +9,7 @@ FROM node:21.6.1-slim
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-ARG NODE_ENV
-ARG DATABASE_URL
-ARG SESSION_SECRET
-ARG SESSION_EXPIRY_DAYS
-ARG SESSION_COOKIE_NAME
-ENV NODE_ENV $NODE_ENV
-ENV DATABASE_URL $DATABASE_URL
-ENV SESSION_SECRET $SESSION_SECRET
-ENV SESSION_EXPIRY_DAYS $SESSION_EXPIRY_DAYS
-ENV SESSION_COOKIE_NAME $SESSION_COOKIE_NAME
+
 
 ENV HOST=0.0.0.0
 ENV PORT=4100
@@ -38,6 +29,8 @@ RUN chown -R main-app:main-app .
 RUN chmod +x ./startup.sh
 RUN pnpm add -g nx@17.2.8 @analogjs/platform@0.2.30 @nx-tools/nx-prisma@5.2.0 vite@5.0.12
 RUN pnpm install
+
+ENV NODE_ENV=production
 
 RUN nx run main-app:build:production
 

@@ -148,7 +148,6 @@ export class VideoPlayerComponent {
       const bufferedEnd = video.buffered.end(video.buffered.length - 1);
       const duration = video.duration;
       const percentBuffered = (bufferedEnd / duration) * 100;
-      console.log('percentBuffered', percentBuffered);
       this.bufferedProgress.nativeElement.style.width = percentBuffered + '%';
     }
   }
@@ -157,8 +156,7 @@ export class VideoPlayerComponent {
     this.isPlaying.set(!this.videoPlayer.nativeElement.paused);
   }
 
-  setFullScreen(event: Event) {
-    console.log(event, { isFullScreen: this.isFullScreen() });
+  setFullScreen(_event: Event) {
     if (this.isFullScreen()) {
       this.isFullScreen.set(false);
     } else {

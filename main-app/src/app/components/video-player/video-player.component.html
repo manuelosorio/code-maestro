@@ -15,12 +15,14 @@
     <ng-content></ng-content>
   </video>
   @if (showPlayButton) {
-    <button class="button" (click)="playVideo()">
-      <img
-        src="https://feather-icons.manuelosor.io/api/icons/play-circle?color=%23f2f2f2&size=30"
-        alt=""
-      />
-    </button>
+    <div class="video__play-button">
+      <button class="button" (click)="playVideo()">
+        <img
+          src="https://feather-icons.manuelosor.io/api/icons/play-circle?color=%23f2f2f2&size=30"
+          alt=""
+        />
+      </button>
+    </div>
   }
   <div
     class="video__nav"

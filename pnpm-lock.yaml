@@ -9,11 +9,8 @@ dependencies:
     specifier: ^1.0.2
     version: 1.0.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@analogjs/router':
-    specifier: ^0.2.30
-    version: 0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
-  '@analogjs/trpc':
-    specifier: ^0.2.30
-    version: 0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@trpc/client@10.45.1)(@trpc/server@10.45.1)(isomorphic-fetch@3.0.0)(superjson@2.2.1)
+    specifier: ^1.2.2
+    version: 1.2.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
   '@angular/animations':
     specifier: 17.2.4
     version: 17.2.4(@angular/core@17.2.4)
@@ -44,12 +41,6 @@ dependencies:
   '@prisma/client':
     specifier: ^5.1.1
     version: 5.10.2(prisma@5.10.2)
-  '@trpc/client':
-    specifier: ^10.45.1
-    version: 10.45.1(@trpc/server@10.45.1)
-  '@trpc/server':
-    specifier: ^10.45.1
-    version: 10.45.1
   bcrypt:
     specifier: ^5.1.1
     version: 5.1.1
@@ -104,11 +95,11 @@ dependencies:
 
 devDependencies:
   '@analogjs/platform':
-    specifier: ^0.2.30
-    version: 0.2.30(@angular-devkit/build-angular@17.2.3)(@nx/devkit@18.1.3)(@nx/vite@18.1.3)
+    specifier: ^1.2.2
+    version: 1.2.2(@angular-devkit/build-angular@17.2.3)(@nx/devkit@18.1.3)(@nx/vite@18.1.3)
   '@analogjs/vite-plugin-angular':
-    specifier: ^0.2.30
-    version: 0.2.30(@angular-devkit/build-angular@17.2.3)
+    specifier: ^1.2.2
+    version: 1.2.2(@angular-devkit/build-angular@17.2.3)
   '@angular-devkit/build-angular':
     specifier: 17.2.3
     version: 17.2.3(@angular/compiler-cli@17.2.4)(@angular/platform-server@17.2.4)(@swc/core@1.3.106)(@types/node@18.19.26)(stylus@0.59.0)(typescript@5.3.3)
@@ -238,37 +229,6 @@ packages:
       '@jridgewell/trace-mapping': 0.3.22
     dev: true
 
-  /@analogjs/content@0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1):
-    resolution: {integrity: sha512-RUayZ6pIdAD8Uq4fV0mAboJmY2nQRZYJ07PR5cVJvOluRz3K9EbENR93Pv64FHhkWHy0Srdu7YcOlk0ZUqikCg==}
-    requiresBuild: true
-    peerDependencies:
-      '@angular/common': ^15.0.0 || >=16.0.0
-      '@angular/core': ^15.0.0 || >=16.0.0
-      '@angular/platform-browser': ^15.0.0 || >=16.0.0
-      '@angular/router': ^15.0.0 || >=16.0.0
-      front-matter: ^4.0.2
-      marked: ^5.0.2
-      marked-gfm-heading-id: ^3.0.4
-      marked-highlight: ^2.0.1
-      mermaid: ^10.2.4
-      prismjs: ^1.29.0
-      rxjs: ^6.5.0 || ^7.5.0
-    dependencies:
-      '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
-      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.3)
-      '@angular/platform-browser': 17.2.4(@angular/animations@17.2.4)(@angular/common@17.2.4)(@angular/core@17.2.4)
-      '@angular/router': 17.2.4(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
-      front-matter: 4.0.2
-      marked: 11.1.1
-      marked-gfm-heading-id: 3.1.2(marked@11.1.1)
-      marked-highlight: 2.1.0(marked@11.1.1)
-      mermaid: 10.8.0
-      prismjs: 1.29.0
-      rxjs: 7.8.1
-      tslib: 2.6.2
-    dev: false
-    optional: true
-
   /@analogjs/content@1.0.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1):
     resolution: {integrity: sha512-5V8bpJ85WgrbK/uM45XPIpz+4M6y5D2R9rAPO9bX9KH0ZwdnGmF0XFWqZLaFmO7Vk2LnctmLOaH3oyD94br5Tg==}
     peerDependencies:
@@ -298,14 +258,45 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@analogjs/platform@0.2.30(@angular-devkit/build-angular@17.2.3)(@nx/devkit@18.1.3)(@nx/vite@18.1.3):
-    resolution: {integrity: sha512-NxyIEMBp3hYksFa/VEQCV5Poh78d2iHk+H2MeednQTSypUooSUz5julHeYW7HBR81AXEtzIN39RPhTZ11omhrQ==}
+  /@analogjs/content@1.2.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-roYoorJImfqgvd/LaFPl6cAmM/ok6riRFXinuILTLYN8corICqebWUj90j3iOhRT/mCaL9dh1P4AF22gDkiVaQ==}
+    requiresBuild: true
     peerDependencies:
-      '@nx/devkit': ^16.0.0 || ^17.0.0
-      '@nx/vite': ^16.0.0 || ^17.0.0
+      '@angular/common': ^15.0.0 || >=16.0.0
+      '@angular/core': ^15.0.0 || >=16.0.0
+      '@angular/platform-browser': ^15.0.0 || >=16.0.0
+      '@angular/router': ^15.0.0 || >=16.0.0
+      front-matter: ^4.0.2
+      marked: ^5.0.2
+      marked-gfm-heading-id: ^3.0.4
+      marked-highlight: ^2.0.1
+      mermaid: ^10.2.4
+      prismjs: ^1.29.0
+      rxjs: ^6.5.0 || ^7.5.0
     dependencies:
-      '@analogjs/vite-plugin-angular': 0.2.30(@angular-devkit/build-angular@17.2.3)
-      '@analogjs/vite-plugin-nitro': 0.2.30
+      '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.3)
+      '@angular/platform-browser': 17.2.4(@angular/animations@17.2.4)(@angular/common@17.2.4)(@angular/core@17.2.4)
+      '@angular/router': 17.2.4(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
+      front-matter: 4.0.2
+      marked: 11.1.1
+      marked-gfm-heading-id: 3.1.2(marked@11.1.1)
+      marked-highlight: 2.1.0(marked@11.1.1)
+      mermaid: 10.8.0
+      prismjs: 1.29.0
+      rxjs: 7.8.1
+      tslib: 2.6.2
+    dev: false
+    optional: true
+
+  /@analogjs/platform@1.2.2(@angular-devkit/build-angular@17.2.3)(@nx/devkit@18.1.3)(@nx/vite@18.1.3):
+    resolution: {integrity: sha512-q8fO3AMwDdXJxMutHquJ+EYMB1DA3aof3WZuJ6mp4HxuCeXOh1+U6Zj/+3Hg4EJW+m4eXh7arCljIsJTBA2R3w==}
+    peerDependencies:
+      '@nx/devkit': ^16.0.0 || ^17.0.0 || ^18.0.0
+      '@nx/vite': ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@analogjs/vite-plugin-angular': 1.2.2(@angular-devkit/build-angular@17.2.3)
+      '@analogjs/vite-plugin-nitro': 1.2.2
       '@nx/devkit': 18.1.3(nx@18.1.3)
       '@nx/vite': 18.1.3(@swc-node/register@1.6.8)(@swc/core@1.3.106)(@types/node@18.19.26)(nx@18.1.3)(typescript@5.3.3)(vite@5.2.6)(vitest@1.4.0)
       nitropack: 2.8.1
@@ -328,8 +319,8 @@ packages:
       - xml2js
     dev: true
 
-  /@analogjs/router@0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1):
-    resolution: {integrity: sha512-ewuxkA6GY/2XWbWff4erc4v33wBzSjkn4WFWiKS2e7a4j5zEqJySGHwIqpmrBy6bUUGrBiHNd9SSlXZu+Rr85g==}
+  /@analogjs/router@1.2.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1):
+    resolution: {integrity: sha512-PgLQyKhHTDA69EHv4ZmoL+y+vqQ1aF8cBPTlBr9/9NRRBpd13gZ8OUMh4slMdK/5KK8W5IjmIfTZGNpswgRZCg==}
     peerDependencies:
       '@angular/core': ^15.0.0 || >=16.0.0
       '@angular/router': ^15.0.0 || >=16.0.0
@@ -338,7 +329,7 @@ packages:
       '@angular/router': 17.2.4(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(rxjs@7.8.1)
       tslib: 2.6.2
     optionalDependencies:
-      '@analogjs/content': 0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
+      '@analogjs/content': 1.2.2(@angular/common@17.2.4)(@angular/core@17.2.4)(@angular/platform-browser@17.2.4)(@angular/router@17.2.4)(front-matter@4.0.2)(marked-gfm-heading-id@3.1.2)(marked-highlight@2.1.0)(marked@11.1.1)(mermaid@10.8.0)(prismjs@1.29.0)(rxjs@7.8.1)
     transitivePeerDependencies:
       - '@angular/common'
       - '@angular/platform-browser'
@@ -351,27 +342,8 @@ packages:
       - rxjs
     dev: false
 
-  /@analogjs/trpc@0.2.30(@angular/common@17.2.4)(@angular/core@17.2.4)(@trpc/client@10.45.1)(@trpc/server@10.45.1)(isomorphic-fetch@3.0.0)(superjson@2.2.1):
-    resolution: {integrity: sha512-/K/bSUnOB4Q3ZSlDuuMcKbXUJpalA9AiGIM7msMbo/uaLAR8bIOf0sH5VtvhCF7IDGKFpVa46Sa+B2zv8bqcyQ==}
-    peerDependencies:
-      '@angular/common': '>=16.0.0'
-      '@angular/core': '>=16.0.0'
-      '@trpc/client': ^10.25.0
-      '@trpc/server': ^10.25.0
-      isomorphic-fetch: ^3.0.0
-      superjson: ^2.2.1
-    dependencies:
-      '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
-      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.3)
-      '@trpc/client': 10.45.1(@trpc/server@10.45.1)
-      '@trpc/server': 10.45.1
-      isomorphic-fetch: 3.0.0
-      superjson: 2.2.1
-      tslib: 2.6.2
-    dev: false
-
-  /@analogjs/vite-plugin-angular@0.2.30(@angular-devkit/build-angular@17.2.3):
-    resolution: {integrity: sha512-XXiXu00DYCBsbW4PLktGFv5VUAB3EHfvywd7bnlXNUXMX6nHSrZcNGAq8VMzibrZ9DMnx2hswd3l4cmBLQaryg==}
+  /@analogjs/vite-plugin-angular@1.2.2(@angular-devkit/build-angular@17.2.3):
+    resolution: {integrity: sha512-VA9gYNOHlDWpdUykj27Fb70OhrRNo32SnaFDIGbukAWLgll6FFKHDE9gcosxBGZorGv/ILmhrUR+1mTj2MbLoA==}
     peerDependencies:
       '@angular-devkit/build-angular': ^15.0.0 || >=16.0.0
     dependencies:
@@ -379,8 +351,8 @@ packages:
       ts-morph: 21.0.1
     dev: true
 
-  /@analogjs/vite-plugin-nitro@0.2.30:
-    resolution: {integrity: sha512-XgaylOvWu9dRGvjOChwPak13f18PuLb1A2KUcVkFp5MsOc/Tm9yFbYT7Nw60z/G4QMWyFbohqMtDwD5Bcg49UQ==}
+  /@analogjs/vite-plugin-nitro@1.2.2:
+    resolution: {integrity: sha512-smFdel5q0oCc7sfrRraVehn5p74dhp9DhWCba7zWLUW/3ym6aEjB7aDy9SQKZIYWhWHSr8MDKI7GLSrEgJXYeQ==}
     dependencies:
       nitropack: 2.8.1
       xmlbuilder2: 3.1.1
@@ -4243,7 +4215,7 @@ packages:
     dependencies:
       '@prisma/debug': 5.10.2
 
-  /@rollup/plugin-alias@5.1.0(rollup@4.9.6):
+  /@rollup/plugin-alias@5.1.0(rollup@4.13.0):
     resolution: {integrity: sha512-lpA3RZ9PdIG7qqhEfv79tBffNaoDuukFDrmhLqg9ifv99u/ehn+lOg30x2zmhf8AQqQUZaMk/B9fZraQ6/acDQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4252,11 +4224,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      rollup: 4.9.6
+      rollup: 4.13.0
       slash: 4.0.0
     dev: true
 
-  /@rollup/plugin-commonjs@25.0.7(rollup@4.9.6):
+  /@rollup/plugin-commonjs@25.0.7(rollup@4.13.0):
     resolution: {integrity: sha512-nEvcR+LRjEjsaSsc4x3XZfCCvZIaSMenZu/OiwOKGN2UhQpAYI7ru7czFvyWbErlpoGjnSX3D5Ch5FcMA3kRWQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4265,16 +4237,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.1.0
       is-reference: 1.2.1
-      magic-string: 0.30.7
-      rollup: 4.9.6
+      magic-string: 0.30.8
+      rollup: 4.13.0
     dev: true
 
-  /@rollup/plugin-inject@5.0.5(rollup@4.9.6):
+  /@rollup/plugin-inject@5.0.5(rollup@4.13.0):
     resolution: {integrity: sha512-2+DEJbNBoPROPkgTDNe8/1YXWcqxbN5DTjASVIOx8HS+pITXushyNiBV56RB08zuptzz8gT3YfkqriTBVycepg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4283,13 +4255,13 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
       estree-walker: 2.0.2
-      magic-string: 0.30.7
-      rollup: 4.9.6
+      magic-string: 0.30.8
+      rollup: 4.13.0
     dev: true
 
-  /@rollup/plugin-json@6.1.0(rollup@4.9.6):
+  /@rollup/plugin-json@6.1.0(rollup@4.13.0):
     resolution: {integrity: sha512-EGI2te5ENk1coGeADSIwZ7G2Q8CJS2sF120T7jLw4xFw9n7wIOXHo+kIYRAoVpJAN+kmqZSoO3Fp4JtoNF4ReA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4298,11 +4270,11 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
-      rollup: 4.9.6
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
+      rollup: 4.13.0
     dev: true
 
-  /@rollup/plugin-node-resolve@15.2.3(rollup@4.9.6):
+  /@rollup/plugin-node-resolve@15.2.3(rollup@4.13.0):
     resolution: {integrity: sha512-j/lym8nf5E21LwBT4Df1VD6hRO2L2iwUeUmP7litikRsVp1H6NWx20NEp0Y7su+7XGc476GnXXc4kFeZNGmaSQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4311,16 +4283,16 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
       is-module: 1.0.0
       resolve: 1.22.8
-      rollup: 4.9.6
+      rollup: 4.13.0
     dev: true
 
-  /@rollup/plugin-replace@5.0.5(rollup@4.9.6):
+  /@rollup/plugin-replace@5.0.5(rollup@4.13.0):
     resolution: {integrity: sha512-rYO4fOi8lMaTg/z5Jb+hKnrHHVn8j2lwkqwyS4kTRhKyWOLf2wST2sWXr4WzWiTcoHTp2sTjqUbqIj2E39slKQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4329,12 +4301,12 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
-      magic-string: 0.30.7
-      rollup: 4.9.6
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
+      magic-string: 0.30.8
+      rollup: 4.13.0
     dev: true
 
-  /@rollup/plugin-terser@0.4.4(rollup@4.9.6):
+  /@rollup/plugin-terser@0.4.4(rollup@4.13.0):
     resolution: {integrity: sha512-XHeJC5Bgvs8LfukDwWZp7yeqin6ns8RTl2B9avbejt6tZqsqvVoWI7ZTQrcNsfKEDWBTnTxM8nMDkO2IFFbd0A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4343,13 +4315,13 @@ packages:
       rollup:
         optional: true
     dependencies:
-      rollup: 4.9.6
+      rollup: 4.13.0
       serialize-javascript: 6.0.2
       smob: 1.4.1
       terser: 5.27.0
     dev: true
 
-  /@rollup/plugin-wasm@6.2.2(rollup@4.9.6):
+  /@rollup/plugin-wasm@6.2.2(rollup@4.13.0):
     resolution: {integrity: sha512-gpC4R1G9Ni92ZIRTexqbhX7U+9estZrbhP+9SRb0DW9xpB9g7j34r+J2hqrcW/lRI7dJaU84MxZM0Rt82tqYPQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4358,8 +4330,8 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
-      rollup: 4.9.6
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
+      rollup: 4.13.0
     dev: true
 
   /@rollup/pluginutils@4.2.1:
@@ -4370,7 +4342,7 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rollup/pluginutils@5.1.0(rollup@4.9.6):
+  /@rollup/pluginutils@5.1.0(rollup@4.13.0):
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -4382,7 +4354,7 @@ packages:
       '@types/estree': 1.0.5
       estree-walker: 2.0.2
       picomatch: 2.3.1
-      rollup: 4.9.6
+      rollup: 4.13.0
     dev: true
 
   /@rollup/rollup-android-arm-eabi@4.13.0:
@@ -4850,18 +4822,6 @@ packages:
   /@swc/types@0.1.5:
     resolution: {integrity: sha512-myfUej5naTBWnqOCc/MdVOLVjXUXtIA+NpDrDBKJtLLg2shUjBu3cZmB/85RyitKc55+lUUyl7oRfLOvkr2hsw==}
     dev: true
-
-  /@trpc/client@10.45.1(@trpc/server@10.45.1):
-    resolution: {integrity: sha512-nVbAk1xpIiI64WgzXGgfxPOGgHoYvffn1IsjV1D/Ri7DL4BKuo2qtZ7UQ+OuHkzH2M8j4ikSVBDpk545fOdvpw==}
-    peerDependencies:
-      '@trpc/server': 10.45.1
-    dependencies:
-      '@trpc/server': 10.45.1
-    dev: false
-
-  /@trpc/server@10.45.1:
-    resolution: {integrity: sha512-KOzBEVaHW9IxEedUP9E50y0tYxAuvlzyjn80Bpemw4rcNbT4WtJnhkFPUY+qDJl7Crt3B/oY2qMgSxVWi9toLg==}
-    dev: false
 
   /@trysound/sax@0.2.0:
     resolution: {integrity: sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==}
@@ -10118,6 +10078,8 @@ packages:
     peerDependenciesMeta:
       webpack:
         optional: true
+      webpack-sources:
+        optional: true
     dependencies:
       webpack: 5.90.0(@swc/core@1.3.106)
       webpack-sources: 3.2.3
@@ -10129,6 +10091,8 @@ packages:
       webpack: '*'
     peerDependenciesMeta:
       webpack:
+        optional: true
+      webpack-sources:
         optional: true
     dependencies:
       webpack: 5.90.1(@swc/core@1.3.106)(esbuild@0.20.0)
@@ -10985,15 +10949,15 @@ packages:
     dependencies:
       '@cloudflare/kv-asset-handler': 0.3.1
       '@netlify/functions': 2.5.1
-      '@rollup/plugin-alias': 5.1.0(rollup@4.9.6)
-      '@rollup/plugin-commonjs': 25.0.7(rollup@4.9.6)
-      '@rollup/plugin-inject': 5.0.5(rollup@4.9.6)
-      '@rollup/plugin-json': 6.1.0(rollup@4.9.6)
-      '@rollup/plugin-node-resolve': 15.2.3(rollup@4.9.6)
-      '@rollup/plugin-replace': 5.0.5(rollup@4.9.6)
-      '@rollup/plugin-terser': 0.4.4(rollup@4.9.6)
-      '@rollup/plugin-wasm': 6.2.2(rollup@4.9.6)
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
+      '@rollup/plugin-alias': 5.1.0(rollup@4.13.0)
+      '@rollup/plugin-commonjs': 25.0.7(rollup@4.13.0)
+      '@rollup/plugin-inject': 5.0.5(rollup@4.13.0)
+      '@rollup/plugin-json': 6.1.0(rollup@4.13.0)
+      '@rollup/plugin-node-resolve': 15.2.3(rollup@4.13.0)
+      '@rollup/plugin-replace': 5.0.5(rollup@4.13.0)
+      '@rollup/plugin-terser': 0.4.4(rollup@4.13.0)
+      '@rollup/plugin-wasm': 6.2.2(rollup@4.13.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
       '@types/http-proxy': 1.17.14
       '@vercel/nft': 0.24.4
       archiver: 6.0.1
@@ -11021,7 +10985,7 @@ packages:
       klona: 2.0.6
       knitwork: 1.0.0
       listhen: 1.5.6
-      magic-string: 0.30.5
+      magic-string: 0.30.8
       mime: 3.0.0
       mlly: 1.5.0
       mri: 1.2.0
@@ -11034,10 +10998,10 @@ packages:
       pkg-types: 1.0.3
       pretty-bytes: 6.1.1
       radix3: 1.1.0
-      rollup: 4.9.6
-      rollup-plugin-visualizer: 5.12.0(rollup@4.9.6)
+      rollup: 4.13.0
+      rollup-plugin-visualizer: 5.12.0(rollup@4.13.0)
       scule: 1.2.0
-      semver: 7.5.4
+      semver: 7.6.0
       serve-placeholder: 2.0.1
       serve-static: 1.15.0
       std-env: 3.7.0
@@ -11045,7 +11009,7 @@ packages:
       uncrypto: 0.1.3
       unctx: 2.3.1
       unenv: 1.9.0
-      unimport: 3.7.1(rollup@4.9.6)
+      unimport: 3.7.1(rollup@4.13.0)
       unstorage: 1.10.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -12587,7 +12551,7 @@ packages:
     resolution: {integrity: sha512-IXgzBWvWQwE6PrDI05OvmXUIruQTcoMDzRsOd5CDvHCVLcLHMTSYvOK5Cm46kWqlV3yAbuSpBZdJ5oP5OUoStg==}
     dev: false
 
-  /rollup-plugin-visualizer@5.12.0(rollup@4.9.6):
+  /rollup-plugin-visualizer@5.12.0(rollup@4.13.0):
     resolution: {integrity: sha512-8/NU9jXcHRs7Nnj07PF2o4gjxmm9lXIrZ8r175bT9dK8qoLlvKTwRMArRCMgpMGlq8CTLugRvEmyMeMXIU2pNQ==}
     engines: {node: '>=14'}
     hasBin: true
@@ -12599,7 +12563,7 @@ packages:
     dependencies:
       open: 8.4.2
       picomatch: 2.3.1
-      rollup: 4.9.6
+      rollup: 4.13.0
       source-map: 0.7.4
       yargs: 17.7.2
     dev: true
@@ -13805,7 +13769,7 @@ packages:
     dependencies:
       acorn: 8.11.3
       estree-walker: 3.0.3
-      magic-string: 0.30.7
+      magic-string: 0.30.8
       unplugin: 1.6.0
     dev: true
 
@@ -13865,16 +13829,16 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /unimport@3.7.1(rollup@4.9.6):
+  /unimport@3.7.1(rollup@4.13.0):
     resolution: {integrity: sha512-V9HpXYfsZye5bPPYUgs0Otn3ODS1mDUciaBlXljI4C2fTwfFpvFZRywmlOu943puN9sncxROMZhsZCjNXEpzEQ==}
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.9.6)
+      '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
       acorn: 8.11.3
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
       fast-glob: 3.3.2
       local-pkg: 0.5.0
-      magic-string: 0.30.7
+      magic-string: 0.30.8
       mlly: 1.5.0
       pathe: 1.1.2
       pkg-types: 1.0.3

@@ -13,7 +13,8 @@ async function main() {
 
   const data = {
     email: process.env['USERS_EMAIL'],
-    name: process.env['USERS_EMAIL'],
+    name: 'Manuel Osorio',
+    bio: `As a Full-Stack JavaScript Developer with a background in Interaction Design, I bring a unique blend of front-end and back-end expertise to my teaching. My experience ranges from UI design to work with back-end technologies. I've also worked as a Graphic Design Laboratory Aide, where I guided students in design principles and technical solutions. My professional journey includes extensive use of version control tools like Git, equipping me with practical insights and knowledge essential for delivering a comprehensive and engaging learning experience.`,
     password: generateSecureRandomString(process.env['USERS_PASSWORD_LENGTH']),
   };
 
@@ -22,6 +23,7 @@ async function main() {
     data: {
       email: data.email,
       name: data.name,
+      bio: data.bio,
       password: await hash(data.password, 10),
     },
   });
@@ -30,6 +32,7 @@ async function main() {
       password: await hash(generateSecureRandomString(20), 10),
       email: 'dummy_user@example.com',
       name: 'Dummy User',
+      bio: '',
     },
   });
   const course = await prisma.course.create({
@@ -38,8 +41,10 @@ async function main() {
       title: 'Git & Github Simplified',
       slug: 'git-and-github-simplified',
       preview_video: 'https://media.w3.org/2010/05/sintel/trailer.mp4',
-      description:
+      short_description:
         'Master the essentials of Git and GitHub with our simplified course designed for rapid learning. Elevate your coding with key version-control skills that streamline collaboration and project management.',
+      description:
+        "Comprehensive course designed to introduce beginners to the world of version control using Git and GitHub. Starting with the basics of version control systems, this course will guide you through the fundamentals of Git and GitHub, emphasizing practical skills and real-world applications. You'll begin with an intuitive GUI approach before delving into the powerful CLI commands, ensuring a solid foundation for all skill levels. By the end of this course, you will be equipped with the knowledge and skills to efficiently manage your coding projects, collaborate with others, and contribute to open-source projects.",
       user_id: user.id,
     },
   });
@@ -104,7 +109,7 @@ async function main() {
 
   const launchDate = await prisma.launchDate.create({
     data: {
-      date: new Date('2024-04-21'),
+      date: new Date('2024-05-09'),
       course_id: course.id,
     },
   });
