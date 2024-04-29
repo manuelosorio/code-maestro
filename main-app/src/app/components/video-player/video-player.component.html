@@ -15,9 +15,11 @@
     <ng-content></ng-content>
   </video>
   @if (showPlayButton) {
-    <button class="button" (click)="playVideo()">
-      <i-feather name="play-circle"></i-feather>
-    </button>
+    <div class="video__play-button">
+      <button class="button" (click)="playVideo()">
+        <i-feather name="play-circle"></i-feather>
+      </button>
+    </div>
   }
   <div
     class="video__nav"

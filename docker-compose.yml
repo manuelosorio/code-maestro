@@ -1,11 +1,39 @@
 version: '3.8'
+volumes:
+  postgres_data:
+  main_app_data:
 services:
+  postgres:
+    image: 'postgres:13'
+    ports:
+      - '6500:5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
   main-app:
+    depends_on:
+      - postgres
+    volumes:
+      - 'main_app_data:/app'
     build:
       context: .
       dockerfile: main-app/Dockerfile
-    ports:
-      - '4100:4100' # Map the port from the container to your host
     environment:
-      - NODE_ENV=production
+      NODE_ENV: ${NODE_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+      SESSION_SECRET: ${SESSION_SECRET}
+      SESSION_EXPIRY_DAYS: ${SESSION_EXPIRY_DAYS}
+      SESSION_COOKIE_NAME: ${SESSION_COOKIE_NAME}
+      USERS_EMAIL: ${USERS_EMAIL}
+      USERS_NAME: ${USERS_NAME}
+      USERS_PASSWORD_LENGTH: ${USERS_PASSWORD_LENGTH}
+      VITE_ANALOG_PUBLIC_BASE_URL: ${VITE_ANALOG_PUBLIC_BASE_URL}
+      NX_CLOUD_ACCESS_TOKEN: ${NX_CLOUD_ACCESS_TOKEN}
+
+    ports:
+      - '4100:4100'
     restart: always

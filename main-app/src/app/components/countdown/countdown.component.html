@@ -1,18 +1,45 @@
 <div class="countdown grid">
-  <div class="countdown__item column--6 column__md--1">
-    <span class="countdown__number">{{ daysRemaining() }}</span>
-    <span class="countdown__label">Days</span>
-  </div>
-  <div class="countdown__item column--6 column__md--1">
-    <span class="countdown__number">{{ hoursRemaining() }}</span>
-    <span class="countdown__label">Hours</span>
-  </div>
-  <div class="countdown__item column--6 column__md--1">
-    <span class="countdown__number">{{ minutesRemaining() }}</span>
-    <span class="countdown__label">Minutes</span>
-  </div>
-  <div class="countdown__item column--6 column__md--1">
-    <span class="countdown__number">{{ secondsRemaining() }}</span>
-    <span class="countdown__label">Seconds</span>
-  </div>
+  @if (loaded()) {
+    <div class="countdown__item column--6 column__md--1">
+      <span class="countdown__number">{{
+        daysRemaining() < 0 ? 0 : daysRemaining()
+      }}</span>
+      <span class="countdown__label">Days</span>
+    </div>
+    <div class="countdown__item column--6 column__md--1">
+      <span class="countdown__number">{{
+        hoursRemaining() < 0 ? 0 : hoursRemaining()
+      }}</span>
+      <span class="countdown__label">Hours</span>
+    </div>
+    <div class="countdown__item column--6 column__md--1">
+      <span class="countdown__number">{{
+        minutesRemaining() < 0 ? 0 : minutesRemaining()
+      }}</span>
+      <span class="countdown__label">Minutes</span>
+    </div>
+    <div class="countdown__item column--6 column__md--1">
+      <span class="countdown__number">{{
+        secondsRemaining() < 0 ? 0 : secondsRemaining()
+      }}</span>
+      <span class="countdown__label">Seconds</span>
+    </div>
+  } @else {
+    <div class="countdown__item column--6 column__md--1 is-loading">
+      <span class="countdown__number">&nbsp;</span>
+      <span class="countdown__label">&nbsp;</span>
+    </div>
+    <div class="countdown__item column--6 column__md--1 is-loading">
+      <span class="countdown__number">&nbsp;</span>
+      <span class="countdown__label">&nbsp;</span>
+    </div>
+    <div class="countdown__item column--6 column__md--1 is-loading">
+      <span class="countdown__number">&nbsp;</span>
+      <span class="countdown__label">&nbsp;</span>
+    </div>
+    <div class="countdown__item column--6 column__md--1 is-loading">
+      <span class="countdown__number">&nbsp;</span>
+      <span class="countdown__label">&nbsp;</span>
+    </div>
+  }
 </div>

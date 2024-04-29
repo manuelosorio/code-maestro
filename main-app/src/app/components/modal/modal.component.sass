@@ -1,10 +1,13 @@
 @use '../../../styles/variables'
 @use '../../../styles/componets/card'
+@use '../../../styles/mixins'
 dialog
   @extend .card
   border: none
   border-radius: 8px
-  padding: 1.5em
+  padding: 2.35em 1.25em
+  +mixins.breakpoint-min('md')
+    padding: 2.35em 2.75em
   &:not([open])
     transform:  translateY(200%)
   //&::backdrop
@@ -15,14 +18,17 @@ dialog
     flex-direction: column
     gap: 0.75em
   button
-    width: fit-content
+    //width: fit-content
+    &[disabled]
+      background: lighten(variables.$black, 50%)
+      color: variables.$black
 fieldset
   border: none
 legend
   margin: 0
   padding: 0
   font:
-    weight: 900
+    weight: 700
     size: 2.25rem
 .close
   width: 1rem
@@ -49,12 +55,15 @@ label
   flex-direction: column
   padding: 0
 .grid
-  gap: 2%
+  gap: 1.25em
 input
   border: 1px solid lighten(variables.$primary, 5%)
   border-radius: 8px
   padding-inline: 1.3em
   padding-block: 0.75em
+
+.cta-row
+  align-items: center
 
 @keyframes animate-modal
   from
@@ -67,3 +76,19 @@ input
 i-feather
   width: 1em
   color: #f2f2f2
+.auth-group
+  align-content: center
+  padding: 0
+  p
+    font-size: .95rem
+    font-weight: 600
+    width: fit-content
+    padding: 0.75em 0
+  a
+    display: block
+    color: variables.$primary
+    font-weight: 500
+    text-align: center
+    text-decoration: none
+    &:hover
+      text-decoration: underline

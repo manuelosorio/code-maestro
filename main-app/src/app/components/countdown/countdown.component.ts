@@ -5,23 +5,30 @@ import {
   computed,
   Inject,
   PLATFORM_ID,
+  input,
+  effect,
 } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
-import { isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-countdown',
   templateUrl: './countdown.component.html',
   styleUrl: './countdown.component.sass',
   standalone: true,
+  imports: [CommonModule],
 })
 export class CountdownComponent implements OnDestroy {
-  private _countdownDate: Date = new Date('2024-03-08T00:00:00.000Z');
+  CountdownDate = input('');
+  private _countdownDate?: Date;
   private timeRemaining = signal(this.getTimeRemaining);
   private readonly timer?: Subscription;
   private isBrowser: boolean = isPlatformBrowser(this.platformId);
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {
+    effect(() => {
+      this._countdownDate = new Date(this.CountdownDate());
+    });
     if (this.isBrowser) {
       this.timer = interval(1000).subscribe(() => {
         this.timeRemaining.set(this.getTimeRemaining);
@@ -29,6 +36,9 @@ export class CountdownComponent implements OnDestroy {
     }
   }
   private get getTimeRemaining(): number {
+    if (!this._countdownDate) {
+      return 0;
+    }
     return this._countdownDate.getTime() - new Date().getTime();
   }
 
@@ -46,6 +56,8 @@ export class CountdownComponent implements OnDestroy {
   secondsRemaining = computed(() =>
     Math.floor((this.timeRemaining() % (1000 * 60)) / 1000),
   );
+
+  loaded = computed(() => this.timeRemaining());
 
   ngOnDestroy() {
     if (this.timer) {

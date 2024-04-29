@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, OnInit, ViewChild } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import {
   FormBuilder,
@@ -8,47 +8,40 @@ import {
 } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
 import { IconsModule } from '../../modules/icons/icons.module';
+import { RouterLink, RouterModule } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, NgOptimizedImage, IconsModule],
+  imports: [
+    CommonModule,
+    IconsModule,
+    ReactiveFormsModule,
+    NgOptimizedImage,
+    HttpClientModule,
+    RouterLink,
+    RouterModule,
+  ],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.sass',
   providers: [FormBuilder],
 })
 export class ModalComponent implements OnInit {
+  public slug = input<string>();
   public modalForm: FormGroup;
+  public errorMessage = '';
+  public successMessage = '';
   @ViewChild('modal') modal?: ElementRef;
 
   constructor(
     private formBuilder: FormBuilder,
     private modalService: ModalService,
+    private httpClient: HttpClient,
   ) {
     this.modalForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(1)]],
       email: ['', [Validators.email, Validators.required]],
-      address: ['', [Validators.required]],
-      zipCode: [
-        '',
-        [Validators.required, Validators.minLength(5), Validators.maxLength(5)],
-      ],
-      cardNumber: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(16),
-          Validators.maxLength(16),
-        ],
-      ],
-      expirationDate: [
-        '',
-        [Validators.required, Validators.minLength(5), Validators.maxLength(5)],
-      ],
-      cvv: [
-        '',
-        [Validators.required, Validators.minLength(3), Validators.maxLength(3)],
-      ],
     });
   }
 
@@ -65,6 +58,8 @@ export class ModalComponent implements OnInit {
   }
   close(): void {
     if (this.modal) {
+      this.errorMessage = '';
+      this.successMessage = '';
       this.modal.nativeElement.close();
     }
   }
@@ -74,19 +69,34 @@ export class ModalComponent implements OnInit {
   get email() {
     return this.modalForm.get('email');
   }
-  get address() {
-    return this.modalForm.get('address');
-  }
-  get zipCode() {
-    return this.modalForm.get('zipCode');
-  }
-  get cardNumber() {
-    return this.modalForm.get('cardNumber');
-  }
-  get expirationDate() {
-    return this.modalForm.get('expirationDate');
-  }
-  get cvv() {
-    return this.modalForm.get('cvv');
+  subscribe() {
+    if (!this.slug()) {
+      this.errorMessage = 'Mail list not found';
+      return;
+    }
+    this.httpClient
+      .post(`/api/v1/mail-list/${this.slug()}/subscribe`, this.modalForm.value)
+      .subscribe({
+        next: (res: any) => {
+          this.errorMessage = '';
+          this.successMessage = res.message;
+          this.modalForm.reset();
+          setTimeout(() => {
+            this.close();
+          }, 1500);
+        },
+        error: (err) => {
+          switch (err.status) {
+            case 404:
+              this.errorMessage = 'Mail list not found';
+              break;
+            case 400:
+              this.errorMessage = err.error.message;
+              break;
+            default:
+              this.errorMessage = 'An error occurred. Please try again later.';
+          }
+        },
+      });
   }
 }

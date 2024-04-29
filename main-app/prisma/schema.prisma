@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String             @id @unique @default(cuid())
+  email            String             @unique
+  name             String?
+  password         String
+  bio              String?
+  mail_list        MailList[]         @relation("UserMailList")
+  subscriber       Subscriber[]       @relation("UserSubscriber")
+  courses          Course[]           @relation("Course")
+  created_at       DateTime           @default(now())
+  updated_at       DateTime?          @updatedAt
+  Session          Session[]
+  CourseEnrollment CourseEnrollment[]
+
+  @@map("user")
+}
+
+model Session {
+  id            String   @id @unique @default(cuid())
+  expires       DateTime
+  session_token String   @unique
+  user_id       String
+  user          User     @relation(fields: [user_id], references: [id])
+
+  @@map("session")
+}
+
+model MailList {
+  id              String       @id @unique @default(cuid())
+  name            String
+  description     String
+  user_id         String
+  mail_list_owner User         @relation(fields: [user_id], references: [id], name: "UserMailList")
+  slug            String       @unique
+  subscriber      Subscriber[]
+  course          Course[]
+
+  @@map("mail_list")
+}
+
+model Subscriber {
+  id              String    @unique @default(cuid())
+  email           String
+  last_sent       DateTime?
+  subscribed_at   DateTime  @default(now())
+  unsubscribed_at DateTime?
+  mail_list_id    String
+  user_id         String?
+  mail_list       MailList  @relation(fields: [mail_list_id], references: [id])
+  user            User?     @relation(fields: [user_id], references: [id], name: "UserSubscriber")
+  @@id([mail_list_id, email])
+  @@map("subscriber")
+}
+
+model Course {
+  id               String             @id @unique @default(cuid())
+  title            String
+  slug             String             @unique
+  description      String
+  short_description String
+  preview_video    String?
+  video_thumbnail  String?
+  lessons          Lesson[]
+  launch_date      LaunchDate[]
+  user_id          String
+  user             User               @relation(fields: [user_id], references: [id], name: "Course")
+  Mail_list        MailList?          @relation(fields: [mail_list_id], references: [id])
+  mail_list_id     String?
+  CourseEnrollment CourseEnrollment[]
+
+  @@map("course")
+}
+
+model Lesson {
+  id          String @id @unique @default(cuid())
+  title       String
+  description String
+  course_id   String
+  course      Course @relation(fields: [course_id], references: [id])
+
+  @@map("lesson")
+}
+
+model LaunchDate {
+  id        String   @id @unique @default(cuid())
+  date      DateTime
+  course_id String
+  course    Course   @relation(fields: [course_id], references: [id])
+
+  @@map("launch_date")
+}
+
+model CourseEnrollment {
+  user_id     String   @map("user_id")
+  course_id   String   @map("course_id")
+  enrolled_at DateTime @default(now()) @map("enrolled_at")
+  status      String   @default("active")
+
+  user   User   @relation(fields: [user_id], references: [id])
+  course Course @relation(fields: [course_id], references: [id])
+
+  @@id([user_id, course_id])
+  @@map("course_enrollment")
+}
+
+
+model DbStatus {
+  initialized Boolean @default(false)
+  @@map("db_status")
+  @@unique([initialized])
+}

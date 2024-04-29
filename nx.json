@@ -6,7 +6,18 @@
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
     },
-    "lint": {
+    "prisma-generate": {
+      "executor": "@prisma/cli",
+      "options": {
+        "schema": "{projectRoot}/prisma/schema.prisma"
+      },
+      "cache": true
+    },
+    "test": {
+      "cache": true,
+      "inputs": ["default", "^production"]
+    },
+    "@nx/eslint:lint": {
       "cache": true,
       "inputs": [
         "default",
@@ -14,14 +25,6 @@
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
       ]
-    },
-    "e2e": {
-      "cache": true,
-      "inputs": ["default", "^production"]
-    },
-    "test": {
-      "cache": true,
-      "inputs": ["default", "^production"]
     }
   },
   "namedInputs": {
@@ -51,5 +54,7 @@
       "style": "css"
     }
   },
-  "nxCloudAccessToken": ""
+  "nxCloudAccessToken": "",
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }
