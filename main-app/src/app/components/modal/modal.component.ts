@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ModalService } from '../../services/modal.service';
+import { IconsModule } from '../../modules/icons/icons.module';
 import { RouterLink, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -15,6 +16,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   standalone: true,
   imports: [
     CommonModule,
+    IconsModule,
     ReactiveFormsModule,
     NgOptimizedImage,
     HttpClientModule,
