@@ -18,7 +18,7 @@
     <div class="video__play-button">
       <button class="button" (click)="playVideo()">
         <img
-          src="https://feather-icons.manuelosor.io/api/icons/play-circle?color=%23f2f2f2&size=30"
+          src="https://cdn.manuelosor.io/api/icons/play-circle?color=%23f2f2f2&size=30"
           alt=""
         />
       </button>
@@ -41,12 +41,12 @@
           <button (click)="playPause()">
             @if (isPlaying()) {
               <img
-                src="https://feather-icons.manuelosor.io/api/icons/pause?color=%23f2f2f2"
+                src="https://cdn.manuelosor.io/api/icons/pause?color=%23f2f2f2"
                 alt=""
               />
             } @else {
               <img
-                src="https://feather-icons.manuelosor.io/api/icons/play?color=%23f2f2f2"
+                src="https://cdn.manuelosor.io/api/icons/play?color=%23f2f2f2"
                 alt=""
               />
             }
@@ -60,22 +60,22 @@
           <button (click)="vidMute()">
             @if (isMuted()) {
               <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume-x?color=%23f2f2f2"
+                src="https://cdn.manuelosor.io/api/icons/volume-x?color=%23f2f2f2"
                 alt=""
               />
             } @else if (volumeValue === 0) {
               <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume?color=%23f2f2f2"
+                src="https://cdn.manuelosor.io/api/icons/volume?color=%23f2f2f2"
                 alt=""
               />
             } @else if (volumeValue > 0 && volumeValue < 50) {
               <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume-1?color=%23f2f2f2"
+                src="https://cdn.manuelosor.io/api/icons/volume-1?color=%23f2f2f2"
                 alt=""
               />
             } @else {
               <img
-                src="https://feather-icons.manuelosor.io/api/icons/volume-2?color=%23f2f2f2"
+                src="https://cdn.manuelosor.io/api/icons/volume-2?color=%23f2f2f2"
                 alt=""
               />
             }
@@ -93,12 +93,12 @@
       <button (click)="toggleFullScreen()">
         @if (isFullScreen()) {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/minimize?color=%23f2f2f2"
+            src="https://cdn.manuelosor.io/api/icons/minimize?color=%23f2f2f2"
             alt=""
           />
         } @else {
           <img
-            src="https://feather-icons.manuelosor.io/api/icons/maximize?color=%23f2f2f2"
+            src="https://cdn.manuelosor.io/api/icons/maximize?color=%23f2f2f2"
             alt=""
           />
         }
